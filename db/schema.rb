@@ -10,9 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_29_092434) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_29_095324) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "dogs", force: :cascade do |t|
+    t.string "name"
+    t.string "breed"
+    t.integer "age"
+    t.integer "energy"
+    t.integer "playfulness"
+    t.integer "good_with_strangers"
+    t.integer "good_with_others_dogs"
+    t.integer "good_with_chidren"
+    t.string "size"
+    t.boolean "neutered"
+    t.integer "good_with_water"
+    t.integer "shadow_level"
+    t.string "sexe"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_dogs_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +46,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_092434) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "dogs", "users"
 end
