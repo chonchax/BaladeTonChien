@@ -8,10 +8,10 @@ class DogsController < ApplicationController
     @dog.save
   end
 
-  private 
+  private
 
   def dog_params
   params.require(:dog).permit(:name,:breed,:age,:energy,:playfulness,:good_with_strangers,:good_with_others_dogs:good_with_chidren,:size,:neutered,:good_with_water,:shadow_level,:sexe)
   end
-  
+
 end
