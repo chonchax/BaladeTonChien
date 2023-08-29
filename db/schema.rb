@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_29_095324) do
-
+ActiveRecord::Schema[7.0].define(version: 2023_08_29_102835) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +50,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_095324) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "dogs", "users"
+  create_table "walks", force: :cascade do |t|
+    t.float "start_address_longitude"
+    t.float "start_address_latitude"
+    t.float "end_address_longitude"
+    t.float "end_address_latitude"
+    t.string "city"
+    t.float "distance"
+    t.string "title"
+    t.integer "difficulty"
+    t.boolean "leash"
+    t.integer "water_presence"
+    t.integer "shadow_presence"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
+  add_foreign_key "dogs", "users"
 end
