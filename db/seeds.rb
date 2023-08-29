@@ -1,5 +1,6 @@
 # il faut créer un user et associer le chien au user
 User.destroy_all
+Walk.destroy_all
 
 p "Création d'un user "
 user1 = User.new(username: "Chonchax", email: "test@gmail.com", password: "azerty", address: "20 Rue des Capucins, Lyon")
@@ -8,7 +9,6 @@ if user1.save
 else
   p "Soucis avec la création du user"
 end
-
 
 dog = Dog.new(name: "Rex", breed: "Berger Australien", age: 4,
               energy: 3, playfulness: 5, good_with_strangers: 5,
@@ -19,4 +19,15 @@ if dog.save
   p "Chien créé"
 else
   p "Soucis avec la création du chien"
+end
+
+walk = Walk.new(start_address_longitude: 4.832184, start_address_latitude: 45.75783,
+                city: "Lyon", distance: 3.5, title: "Test balade",
+                difficulty: 2, leash: true, water_presence: 3,
+                shadow_presence: 3)
+
+if walk.save
+  p "balade créé"
+else
+  p "Soucis avec la création de la balade"
 end
