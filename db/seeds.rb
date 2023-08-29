@@ -2,7 +2,7 @@
 User.destroy_all
 
 p "Création d'un user "
-user1 = User.new(username: "Charlie", email: "test@gmail.com", password: "azerty", address: "20 Rue des Capucins, Lyon")
+user1 = User.new(username: "Chonchax", email: "test@gmail.com", password: "azerty", address: "20 Rue des Capucins, Lyon")
 if user1.save
   p "user créé"
 else
