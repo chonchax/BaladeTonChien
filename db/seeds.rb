@@ -1,12 +1,22 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+# il faut créer un user et associer le chien au user
 User.destroy_all
 
-user1 = User.new(username: "Chonchax", password: "azerty", email: "test@gmail.com", address: "20 Rue des Capucins, Lyon")
-user1.save
-puts "user1 ok"
+p "Création d'un user "
+user1 = User.new(username: "Chonchax", email: "test@gmail.com", password: "azerty", address: "20 Rue des Capucins, Lyon")
+if user1.save
+  p "user créé"
+else
+  p "Soucis avec la création du user"
+end
+
+
+dog = Dog.new(name: "Rex", breed: "Berger Australien", age: 4,
+              energy: 3, playfulness: 5, good_with_strangers: 5,
+              good_with_others_dogs: 5, good_with_chidren: 4,
+              size: "Grand", neutered: true, good_with_water: 3,
+              shadow_level: 3, sexe: "Male", user_id: user1.id)
+if dog.save
+  p "Chien créé"
+else
+  p "Soucis avec la création du chien"
+end
