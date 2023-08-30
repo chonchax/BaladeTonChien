@@ -13,14 +13,6 @@ class WalksController < ApplicationController
 
     # si on veut que le current user
 
-    @user = current_user
-    @markers << {
-      lat: @user.latitude,
-      lng: @user.longitude,
-      info_window_html: render_to_string(partial: "info_window_user", locals: { user: @user }),
-      marker_html: render_to_string(partial: "marker_user")
-    }
-
     # si on veut tout les users
 
     # @users = User.all
