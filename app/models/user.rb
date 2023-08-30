@@ -7,5 +7,5 @@ class User < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
-  has_many :dogs, dependent: :destroy
+  has_one :dog, dependent: :destroy
 end

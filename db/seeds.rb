@@ -12,13 +12,52 @@ else
   p "Soucis avec la création du user"
 end
 
-dog = Dog.new(name: "Rex", breed: "Berger Australien", age: 4,
+dog1 = Dog.new(name: "Rex", breed: "Berger Australien", age: 4,
               energy: 3, playfulness: 5, good_with_strangers: 5,
               good_with_others_dogs: 5, good_with_chidren: 4,
               size: "Grand", neutered: true, good_with_water: 3,
               shadow_level: 3, sexe: "Male", user_id: user1.id)
-if dog.save
+if dog1.save
   p "Chien créé"
+else
+  p "Soucis avec la création du chien"
+end
+
+p "Création d'un user "
+user2 = User.new(username: "AnneFlorette", email: "toto@gmail.com", password: "azerty", address: "20 Rue des Capucins, Lyon")
+if user2.save
+  p "user créé"
+else
+  p "Soucis avec la création du user"
+end
+
+dog2 = Dog.new(name: "Ostia", breed: "Golden Retriver", age: 7,
+              energy: 2, playfulness: 4, good_with_strangers: 4,
+              good_with_others_dogs: 3, good_with_chidren: 1,
+              size: "Grand", neutered: true, good_with_water: 5,
+              shadow_level: 5, sexe: "Female", user_id: user2.id)
+if dog2.save
+  p "Chien 2 créé"
+else
+  p "Soucis avec la création du chien"
+end
+
+
+p "Création d'un user "
+user3 = User.new(username: "Camelito", email: "caca@gmail.com", password: "azerty", address: "20 Rue des Capucins, Lyon")
+if user3.save
+  p "user créé"
+else
+  p "Soucis avec la création du user"
+end
+
+dog3 = Dog.new(name: "Buddy", breed: "Teckel", age: 2,
+              energy: 5, playfulness: 5, good_with_strangers: 5,
+              good_with_others_dogs: 5, good_with_chidren: 5,
+              size: "Petit", neutered: true, good_with_water: 5,
+              shadow_level: 3, sexe: "Female", user_id: user3.id)
+if dog3.save
+  p "Chien 3 créé"
 else
   p "Soucis avec la création du chien"
 end
