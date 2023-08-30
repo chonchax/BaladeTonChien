@@ -1,17 +1,14 @@
-<div class="card-product">
-  <%= image_tag "balade.jpg"%>
-  <div class="card-product-infos">
-    <h2><%= walk.title %></h2>
-      <ul>
-        <li>
-          <p><%= walk.distance %> km</p>
-        </li>
-        <li>
-          <%= walk.difficulty %>
-        </li>
-        <li>
-          <%= walk.city %>
-        </li>
-      </ul>
+<%= link_to(dog_walk_path(current_user.dog, walk), class:"text-decoration-none text-dark") do %>
+  <div class="card-product">
+    <%= image_tag "balade.jpg"%>
+    <div class="walk-description fit">
+      <h2><%= walk.title %></h2>
+      <p> <i class="fa-solid fa-arrows-left-right-to-line" style="width:20px"></i> <%= walk.distance %> km</p>
+      <p> <i class="fa-solid fa-temperature-arrow-up" style="width:20px"></i> <%= walk.difficulty %></p>
+      <p> <i class="fa-solid fa-map-location-dot" style="width:20px"></i> <%= walk.city %></p>
+    </div>
   </div>
-</div>
+<% end %>
+
+
+<%# <i class="fa-solid fa-arrow-up-right-dots"></i> %>
