@@ -9,7 +9,15 @@
   width: 300px;
 }
 
-.usermap{
-  width: 100vh;
-  height: 100vh;
+.usermap {
+  width: 100%;
+  height: calc(100vh - 56px);
+}
+
+.search {
+  padding: 2%;
+}
+
+.form-control {
+  border-radius: 40px;
 }
