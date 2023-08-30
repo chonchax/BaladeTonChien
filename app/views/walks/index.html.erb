@@ -1,7 +1,13 @@
-<%= render "shared/search" %>
+<div class="app_container">
 
-<div style="width: 100%; height: 600px;" class="usermap"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>">
+  <%= render "shared/search" %>
+
+  <div class="usermap"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>">
+  </div>
+
+    <%= render "shared/footer" %>
+
 </div>
