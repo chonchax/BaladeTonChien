@@ -4,19 +4,51 @@ import mapboxgl from 'mapbox-gl' // Don't forget this!
 export default class extends Controller {
   static values = {
     apiKey: String,
-    markers: Array
+    markers: Array,
+    type: String,
+    coordinates: Array
   }
 
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
+    console.log(this.typeValue, this.coordinatesValue);
 
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/mapbox/streets-v10"
+      style: "mapbox://styles/cameliaasb/cll0p0q0z009h01pmetfpa29d"
     })
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
     this.#geolocalisation()
+
+    if (this.typeValue) {
+      this.map.on('load', () => {
+        this.map.addSource('route', {
+          'type': 'geojson',
+          'data': {
+            'type': 'Feature',
+            'properties': {},
+            'geometry': {
+              'type': this.typeValue,
+              'coordinates': this.coordinatesValue
+            },
+          }
+        });
+        this.map.addLayer({
+          'id': 'route',
+          'type': 'line',
+          'source': 'route',
+          'layout': {
+            'line-join': 'round',
+            'line-cap': 'round'
+          },
+          'paint': {
+            'line-color': '#FD1015',
+            'line-width': 6
+          }
+        });
+      });
+    }
   }
 
   #geolocalisation() {
@@ -31,8 +63,7 @@ export default class extends Controller {
       showUserHeading: true
       })
       );
-  }
-
+     
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
@@ -52,7 +83,16 @@ export default class extends Controller {
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
     this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 14, duration: 0 })
+    if (this.typeValue) {
+      const boundsOptions = { padding: 70, maxZoom: 11.5, duration: 0 }
+      this.map.fitBounds(bounds, boundsOptions)
+    } else {
+      const boundsOptions = { padding: 70, maxZoom: 14, duration: 0 }
+      this.map.fitBounds(bounds, boundsOptions)
+    }
   }
 
+  #walkShow() {
+
+  }
 }

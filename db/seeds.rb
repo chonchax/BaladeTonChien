@@ -55,3 +55,6 @@ bug = Walk.where(title: "Jeu de Regards sur Méginand")
 bug.destroy(bug.ids)
 
 puts "bug destroy"
+
+
+
