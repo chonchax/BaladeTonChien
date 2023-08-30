@@ -36,5 +36,7 @@ class WalksController < ApplicationController
 
   def show
     @walk = Walk.find(params[:id])
+    @walk_geometry = @walk.geometry
+    @markers = [{lat: @walk.start_address_latitude, lng: @walk.start_address_longitude, marker_html: render_to_string(partial: "marker"), info_window_html: render_to_string(partial: "info_window", locals: { walk: @walk })}]
   end
 end

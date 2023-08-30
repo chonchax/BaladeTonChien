@@ -4,11 +4,14 @@ import mapboxgl from 'mapbox-gl' // Don't forget this!
 export default class extends Controller {
   static values = {
     apiKey: String,
-    markers: Array
+    markers: Array,
+    type: String,
+    coordinates: Array
   }
 
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
+    console.log(this.typeValue, this.coordinatesValue);
 
     this.map = new mapboxgl.Map({
       container: this.element,
@@ -16,6 +19,35 @@ export default class extends Controller {
     })
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
+
+    if (this.typeValue) {
+      this.map.on('load', () => {
+        this.map.addSource('route', {
+          'type': 'geojson',
+          'data': {
+            'type': 'Feature',
+            'properties': {},
+            'geometry': {
+              'type': this.typeValue,
+              'coordinates': this.coordinatesValue
+            },
+          }
+        });
+        this.map.addLayer({
+          'id': 'route',
+          'type': 'line',
+          'source': 'route',
+          'layout': {
+            'line-join': 'round',
+            'line-cap': 'round'
+          },
+          'paint': {
+            'line-color': '#FD1015',
+            'line-width': 6
+          }
+        });
+      });
+    }
   }
 
   #addMarkersToMap() {
@@ -37,7 +69,16 @@ export default class extends Controller {
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
     this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 14, duration: 0 })
+    if (this.typeValue) {
+      const boundsOptions = { padding: 70, maxZoom: 11.5, duration: 0 }
+      this.map.fitBounds(bounds, boundsOptions)
+    } else {
+      const boundsOptions = { padding: 70, maxZoom: 14, duration: 0 }
+      this.map.fitBounds(bounds, boundsOptions)
+    }
   }
 
+  #walkShow() {
+
+  }
 }
