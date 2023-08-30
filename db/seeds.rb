@@ -1,3 +1,5 @@
+require 'open-uri'
+require 'json'
 # il faut créer un user et associer le chien au user
 User.destroy_all
 Walk.destroy_all
@@ -21,13 +23,35 @@ else
   p "Soucis avec la création du chien"
 end
 
-walk = Walk.new(start_address_longitude: 4.832184, start_address_latitude: 45.75783,
-                city: "Lyon", distance: 3.5, title: "Test balade",
-                difficulty: 2, leash: true, water_presence: 3,
-                shadow_presence: 3)
+# walk = Walk.new(start_address_longitude: 4.832184, start_address_latitude: 45.75783,
+#                 city: "Lyon", distance: 3.5, title: "Test balade",
+#                 difficulty: 2, leash: true, water_presence: 3,
+#                 shadow_presence: 3)
 
-if walk.save
-  p "balade créé"
-else
-  p "Soucis avec la création de la balade"
+# if walk.save
+#   p "balade créé"
+# else
+#   p "Soucis avec la création de la balade"
+# end
+
+url = "https://data.grandlyon.com/geoserver/metropole-de-lyon/ows?SERVICE=WFS&VERSION=2.0.0&request=GetFeature&typename=metropole-de-lyon:evg_esp_veg.envpdiprboucle&outputFormat=application/json&SRSNAME=EPSG:4171&startIndex=0&sortBy=gid&count=100"
+
+puts "Je choppe la balade"
+file = URI.open(url)
+walks = JSON.parse(file.read)
+walks['features'].each do |walk|
+  Walk.create(
+    city: walk['properties']['commune_depart'],
+    title: walk['properties']['nom'],
+    distance: walk['properties']['longueur'],
+    difficulty: walk['properties']['difficulte'],
+    start_address_longitude: walk['properties']['xdepart'],
+    start_address_latitude: walk['properties']['ydepart'],
+    geometry: walk['geometry']
+  )
 end
+puts "jai fini de chopper"
+bug = Walk.where(title: "Jeu de Regards sur Méginand")
+bug.destroy(bug.ids)
+
+puts "bug destroy"
