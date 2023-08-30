@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,500;6..12,800&family=Outfit:wght@400;700&family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
     <title>BaladeTonChien</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,6 +15,7 @@
   </head>
 
   <body>
+<%= render "shared/flashes" %>
     <%= yield %>
   </body>
 </html>
