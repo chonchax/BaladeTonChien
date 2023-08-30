@@ -2,6 +2,16 @@
   <%= image_tag "balade.jpg"%>
   <div class="card-product-infos">
     <h2><%= walk.title %></h2>
-    <p>Product description with <strong>relevant info</strong> only.</p>
+      <ul>
+        <li>
+          <p><%= walk.distance %> km</p>
+        </li>
+        <li>
+          <%= walk.difficulty %>
+        </li>
+        <li>
+          <%= walk.city %>
+        </li>
+      </ul>
   </div>
 </div>
