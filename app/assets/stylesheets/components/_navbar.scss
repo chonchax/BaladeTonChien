@@ -19,9 +19,10 @@
 
 .search-form-control {
   position: relative;
+
 }
 
-.search-form-control .btn {
+.search-form-control > .btn {
   position: absolute;
   top: 8px;
   bottom: 8px;
@@ -49,4 +50,6 @@
 
 .search {
   padding: 2%;
+  background-color: #116D6E;
+
 }
