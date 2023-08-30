@@ -1,9 +1,13 @@
-<%= render "shared/search" %>
+<div class="app_container">
 
-<div style="width: 100%; height: 600px;" class="usermap"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-type-value="<%= @walk_geometry["type"] %>"
-  data-map-coordinates-value="<%= @walk_geometry["coordinates"] %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>">
+  <%= render "shared/search" %>
+
+  <div class="usermap"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-type-value="<%= @walk_geometry["type"] %>"
+    data-map-coordinates-value="<%= @walk_geometry["coordinates"] %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>">
+  </div>
+
 </div>
