@@ -1,6 +1,6 @@
-  <div class="containery center-everything">
-
-    <%= cl_image_tag @dog.photo.key, class:"avatar", crop: :fill %>
+<div class="app_container">
+  <div class="center-everything my-dog-background">
+    <%= cl_image_tag @dog.photo.key, class:"dog-avatar", crop: :fill %>
     <h2> <%= @dog.name %> </h2>
 
     <%= simple_form_for(dogs_path) do |f| %>
@@ -19,8 +19,10 @@
                       ],
                     as: :check_boxes, input_html: { class: "tag-selector" },
                     item_wrapper_class: 'tag-item' %>
-        <%= f.submit "Enregistrer mes changements", class: "btn-dog-description" %>
+        <%= f.submit "Enregistrer des changements", class: "btn-dog-description" %>
       </div>
     <% end %>
   </div>
+</div>
+
   <%= render "shared/footer" %>

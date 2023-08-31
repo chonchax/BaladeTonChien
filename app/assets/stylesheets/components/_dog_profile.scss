@@ -35,7 +35,7 @@
 
 
 .btn-dog-description {
-  background-color: #F4F2DE;
+  background-color: #CEE6F3;
   font-weight: bold;
   border-radius: 20px;
   border: none;
@@ -45,13 +45,18 @@
   width: 100%
 }
 
-.avatar {
+.dog-avatar {
   width: 50vw;
   height: 50vw;
   border-radius: 50%;
   object-fit: cover;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border: white 2px solid;
 }
 
+.my-dog-background {
+  background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+}
 
 .center-everything {
   height: calc(100vh - 70px);
@@ -59,10 +64,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 10%;
+  padding: 20% 10%;
 
   > h2 {
   font-size: 32px;
   font-weight: bold;
+  color: white;
   }
 }
