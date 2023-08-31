@@ -11,7 +11,6 @@ export default class extends Controller {
 
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
-    console.log(this.typeValue, this.coordinatesValue);
 
     this.map = new mapboxgl.Map({
       container: this.element,
@@ -66,7 +65,7 @@ export default class extends Controller {
       })
       );
     }
-    
+
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup({closeButton: false}).setHTML(marker.info_window_html)
