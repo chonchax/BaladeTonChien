@@ -1,7 +1,14 @@
   <div class="footer footer-links">
-      <a href="#"><i class="fa-solid fa-heart"></i></a>
-      <a href="#"><i class="fa-regular fa-message"></i></a>
-      <a href="#"><i class="fa-solid fa-dog"></i></a>
-      <a href="#"><i class="fa-solid fa-plus"></i></a>
-      <a href="#"><i class="fa-regular fa-user"></i></a>
+      <%# <%= link_to tindog_path(current_user.dog)  do %>
+        <%# <i class="fa-solid fa-heart"></i> %>
+      <%# <% end %>
+      <%= link_to tindog_path(current_user.dog) do %>
+        <i class="fa-regular fa-comments"></i>
+      <% end %>
+      <%= link_to dog_walks_path(current_user.dog) do %>
+        <i class="fa-solid fa-map-location-dot"></i>
+      <% end %>
+      <%= link_to my_dog_path do %>
+        <i class="fa-solid fa-dog"></i>
+      <% end %>
   </div>
