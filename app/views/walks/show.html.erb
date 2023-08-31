@@ -1,21 +1,34 @@
 <div class="app_container">
+  <div class="bg-grey">
+    <div class="showmap"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-type-value="<%= @walk_geometry["type"] %>"
+      data-map-coordinates-value="<%= @walk_geometry["coordinates"] %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>">
+    </div>
 
-  <div class="showmap"
-    data-controller="map"
-    data-map-markers-value="<%= @markers.to_json %>"
-    data-map-type-value="<%= @walk_geometry["type"] %>"
-    data-map-coordinates-value="<%= @walk_geometry["coordinates"] %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>">
-  </div>
 
-  <div class="walk-infos">
-  <h2><%= @walk.title%></h2>
-  <p><strong>Ville : </strong><%=@walk.city %></p>
-  <p><strong>Difficulté : </strong><%=@walk.difficulty %></p>
-  <p><strong>Distance : </strong><%=@walk.distance %> km</p>
-  <p><strong>Temps de parcours : </strong><%=@walk.duration %></p>
-  <p><strong>Description : </strong><%=@walk.description %></p>
-
+    <div class ="walk-card">
+      <div class="walk-infos">
+        <div class="walk-photo" data-controller="enlarge">
+          <%= image_tag "grand-parc-de-miribel.jpg", data: {
+                                                            action: "click->enlarge#fire",
+                                                            enlarge_target: "img"
+                                                          }%>
+        </div>
+        <div class="walk-data">
+          <h2><%= @walk.title%></h2>
+          <p><strong>Ville : </strong><%=@walk.city %></p>
+          <p><strong>Difficulté : </strong><%=@walk.difficulty.capitalize %></p>
+          <p><strong>Distance (km) : </strong><%=@walk.distance%>km</p>
+          <p><strong>Temps de parcours : </strong><%=@walk.duration %></p>
+        </div>
+      </div>
+      <div class="walk-description">
+        <p><strong>Description : </strong><span data-controller="typed" data-typed-sentences-value="<%=[@walk.description] %>"></span></p>
+      </div>
+    </div>
   </div>
   <%= render "shared/footer" %>
 </div>

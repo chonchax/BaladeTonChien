@@ -11,13 +11,18 @@
 
 .indexmap {
   width: 100%;
-  height: calc(100vh - 19%);
+  height: 100vh;
 }
 
 .showmap {
   width: 100%;
-  height: calc(100vh - 50%);
+  // height: calc(100vh - 56%);
+  height: 40vh;
 }
+
+
+
+
 
 
 
@@ -62,3 +67,4 @@
 #menu a.active:hover {
   background: #3074a4;
 }
+
