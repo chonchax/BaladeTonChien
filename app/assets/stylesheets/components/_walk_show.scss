@@ -23,6 +23,7 @@
     z-index: 50;
     transform: scale(1);
     height: 150px;
+    border-radius: 0;
   }
 }
 
@@ -47,6 +48,10 @@
 
 .walk-description p{
   margin-bottom: 0.6em;
+}
+
+.walk-description strong {
+  color: #116D6E;
 }
 
 .bg-grey {
