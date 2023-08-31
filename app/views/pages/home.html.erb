@@ -41,11 +41,10 @@
   </div>
 
   <div class="boubou">
-    <div class="bouton"> On y va ?</div>
+    <%= link_to(dog_walks_path(current_user.dog), class:"text-decoration-none") do %>
+      <div class="bouton"> On y va ?</div>
+    <% end %>
   </div>
-  
+
   <%= render "shared/footer" %>
 </div>
-
-
-
