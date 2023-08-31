@@ -84,6 +84,8 @@ walks['features'].each do |walk|
     title: walk['properties']['nom'],
     distance: walk['properties']['longueur'],
     difficulty: walk['properties']['difficulte'],
+    duration: walk['properties']['temps_parcours'],
+    description: walk['properties']['descriptif'],
     start_address_longitude: walk['properties']['xdepart'],
     start_address_latitude: walk['properties']['ydepart'],
     geometry: walk['geometry']
@@ -94,6 +96,3 @@ bug = Walk.where(title: "Jeu de Regards sur Méginand")
 bug.destroy(bug.ids)
 
 puts "bug destroy"
-
-
-

@@ -1,8 +1,6 @@
 <div class="app_container">
 
-  <%= render "shared/search" %>
-
-  <div class="usermap"
+  <div class="showmap"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-type-value="<%= @walk_geometry["type"] %>"
@@ -10,4 +8,14 @@
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>">
   </div>
 
+  <div class="walk-infos">
+  <h2><%= @walk.title%></h2>
+  <p><strong>Ville : </strong><%=@walk.city %></p>
+  <p><strong>Difficulté : </strong><%=@walk.difficulty %></p>
+  <p><strong>Distance : </strong><%=@walk.distance %> km</p>
+  <p><strong>Temps de parcours : </strong><%=@walk.duration %></p>
+  <p><strong>Description : </strong><%=@walk.description %></p>
+
+  </div>
+  <%= render "shared/footer" %>
 </div>
