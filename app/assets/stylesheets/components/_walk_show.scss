@@ -1,0 +1,54 @@
+.walk-card {
+  bottom: 9px;
+}
+
+.walk-infos {
+  display: flex;
+}
+
+.walk-infos .walk-photo {
+  width: 30%;
+}
+
+.walk-infos .walk-photo img {
+  width: 100%;
+  border-radius: 25%;
+  margin-top: 50px;
+  height: 100px;
+  padding: 3px;
+  transition: all 0.25s ease;
+
+  &.big {
+    position: fixed;
+    z-index: 50;
+    transform: scale(1);
+  }
+}
+
+.walk-infos .walk-data {
+  padding: 20px 10px 10px 20px;
+  line-height: 1em;
+}
+
+.walk-data h2 {
+  color: #C20114;
+  font-weight: 700;
+  text-align: center;
+}
+
+.walk-data strong {
+  color: #116D6E;
+}
+
+.walk-description {
+  margin: 0 1em 1em 1em;
+}
+
+.walk-description p{
+  margin-bottom: 0.6em;
+}
+
+.bg-grey {
+  background-color: #ECEBF3;
+  height: 100%;
+}
