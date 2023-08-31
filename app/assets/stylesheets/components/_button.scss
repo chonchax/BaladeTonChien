@@ -6,16 +6,16 @@
   color:white;
   text-align: center;
   font-size: 12px;
-  padding: 6px;
-  width: 200px;
+  padding: 30px;
+  width: fit-content;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
   cursor: pointer;
-  margin: 5px;
+  // margin: 5px;
   font-family: 'Oxygen', sans-serif;
-  background: radial-gradient(#D800A6, #00C4FF);
+  background: radial-gradient(#00C4FF, #116D6E);
 }
   .bouton:hover {
     background-color: #ACB1D6;
