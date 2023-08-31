@@ -12,6 +12,14 @@ class DogsController < ApplicationController
     end
   end
 
+  def mydog
+    @dog = current_user.dog
+  end
+
+  def update
+    # pouvoir récupérérer ce qui se passe dans le formulaire du dog profile
+  end
+
   private
 
   def dog_params

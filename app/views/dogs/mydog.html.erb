@@ -1,0 +1,26 @@
+  <div class="containery center-everything">
+
+    <%= cl_image_tag @dog.photo.key, class:"avatar", crop: :fill %>
+    <h2> <%= @dog.name %> </h2>
+
+    <%= simple_form_for(dogs_path) do |f| %>
+      <div class="dog-attributes">
+        <%= f.input :tags, label: "", required: false,
+                    collection: [
+                      @dog.sexe,
+                      @dog.age < 3 ? "Chiot": @dog.age > 9 ? "Chien senior" : "Chien adulte" ,
+                      @dog.neutered ? (@dog.sexe == "Femelle" ? "Stérilisée": "Stérilisé") : (@dog.sexe == "Femelle" ? "Non stérilisée": "Non stérilisé"),
+                      @dog.breed,
+                      @dog.energy < 3 ? "Plutôt calme": "A besoin de se dépenser",
+                      @dog.playfulness < 3 ? "Joue peu": "Joue beaucoup",
+                      @dog.good_with_strangers < 3 ? "S'entend pas bien avec les inconnus": "S'entend bien avec les inconnus",
+                      @dog.good_with_others_dogs < 3 ? "S'entend pas bien avec les autres chiens": "S'entend bien avec les autres chiens",
+                      @dog.good_with_chidren < 3 ? "Préfère éviter les enfants": "S'entend bien avec les enfants"
+                      ],
+                    as: :check_boxes, input_html: { class: "tag-selector" },
+                    item_wrapper_class: 'tag-item' %>
+        <%= f.submit "Enregistrer mes changements", class: "btn-dog-description" %>
+      </div>
+    <% end %>
+  </div>
+  <%= render "shared/footer" %>
