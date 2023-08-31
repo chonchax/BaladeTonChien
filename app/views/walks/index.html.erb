@@ -2,7 +2,7 @@
 
   <%= render "shared/search" %>
 
-  <div class="usermap"
+  <div class="indexmap"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>">
