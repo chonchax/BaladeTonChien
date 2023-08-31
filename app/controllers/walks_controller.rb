@@ -1,7 +1,16 @@
 class WalksController < ApplicationController
   def index
     @walks = Walk.all
+
+    if params[:query].present?
+      sql_subquery = "title @@ :query OR description @@ :query"
+      @walks = @walks.where(sql_subquery, query: "%#{params[:query]}%")
+    else
+      @walks = Walk.all
+    end
+
     @dog = current_user.dog
+
     # Insere toutes les balades sur la map
     @markers = @walks.map do |walk|
       {
