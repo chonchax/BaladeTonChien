@@ -1,8 +1,19 @@
 
 <div class="app_container tindog-background">
   <div class="center-everything">
-    <%= cl_image_tag @dog.photo.key, class:"dog-avatar", crop: :fill %>
+    <%= cl_image_tag @dog.photo.key, class:"avatar-large", crop: :fill %>
     <h2> <%= @dog.name %> </h2>
+    <div class="description-tindog">
+      <h3> <%=
+      "#{@dog.sexe}
+      #{@dog.neutered ? (@dog.sexe == "Femelle" ? "stérilisée": "stérilisé") : (@dog.sexe == "Femelle" ? "non stérilisée": "non stérilisé")}
+       de #{@dog.age} ans."
+      %> </h3>
+      <p> <%=
+      "#{@dog.name} est un #{@dog.breed} #{@dog.energy < 3 ? "plutôt calme": "qui a besoin de se dépenser"}, et qui
+      #{@dog.good_with_strangers < 3 ? "s'entend pas bien avec les inconnus": "s'entend bien avec les inconnus"}."
+      %> </p>
+    </div>
   </div>
 </div>
 
