@@ -11,6 +11,6 @@ export default class extends Controller {
   fire() {
     // this.imgTarget.classList.Add("big");
     console.log(this.imgTarget.classList);
-    this.imgTarget.classList.add("big")
+    this.imgTarget.classList.toggle("big")
   }
 }
