@@ -72,12 +72,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_164016) do
   end
 
   create_table "tindogs", force: :cascade do |t|
-    t.string "swipe", default: "not yet"
-    t.string "match", default: "pending"
-    t.bigint "dog_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["dog_id"], name: "index_tindogs_on_dog_id"
+    t.bigint "sender_id", null: false
+    t.bigint "receiver_id", null: false
+    t.index ["receiver_id"], name: "index_tindogs_on_receiver_id"
+    t.index ["sender_id"], name: "index_tindogs_on_sender_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -120,5 +120,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_164016) do
   add_foreign_key "dog_walks", "dogs"
   add_foreign_key "dog_walks", "walks"
   add_foreign_key "dogs", "users"
-  add_foreign_key "tindogs", "dogs"
+  add_foreign_key "tindogs", "dogs", column: "receiver_id"
+  add_foreign_key "tindogs", "dogs", column: "sender_id"
 end

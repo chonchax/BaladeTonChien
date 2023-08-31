@@ -21,6 +21,7 @@ export default class extends Controller {
     this.#fitMapToMarkers()
     this.#geolocalisation()
 
+
     if (this.typeValue) {
       this.map.on('load', () => {
         this.map.addSource('route', {
@@ -51,6 +52,7 @@ export default class extends Controller {
     }
   }
 
+
   #geolocalisation() {
     this.map.addControl(
       new mapboxgl.GeolocateControl({
@@ -64,9 +66,10 @@ export default class extends Controller {
       })
       );
     }
+    
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
-      const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
+      const popup = new mapboxgl.Popup({closeButton: false}).setHTML(marker.info_window_html)
 
       // Create a HTML element for your custom marker
       const customMarker = document.createElement("div")
@@ -92,7 +95,4 @@ export default class extends Controller {
     }
   }
 
-  #walkShow() {
-
-  }
 }

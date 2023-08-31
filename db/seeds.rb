@@ -4,6 +4,13 @@ require 'json'
 User.destroy_all
 Walk.destroy_all
 
+file1 = URI.open("https://img.freepik.com/photos-premium/vue-face-petit-chien-mignon_23-2148423593.jpg")
+puts "image fonctionne"
+file2 = URI.open("https://selcius.fr/wp-content/uploads/2021/08/spits-nain-court.jpg")
+puts "image fonctionne"
+file3 = URI.open("https://i.ytimg.com/vi/wdqJ03HcGVI/maxresdefault.jpg")
+puts "image fonctionne"
+
 p "Création d'un user "
 user1 = User.new(username: "Chonchax", email: "test@gmail.com", password: "azerty", address: "20 Rue des Capucins, Lyon")
 if user1.save
@@ -17,6 +24,7 @@ dog1 = Dog.new(name: "Rex", breed: "Berger Australien", age: 4,
               good_with_others_dogs: 5, good_with_chidren: 4,
               size: "Grand", neutered: true, good_with_water: 3,
               shadow_level: 3, sexe: "Male", user_id: user1.id)
+              dog1.photo.attach(io: file1, filename: "toto.jpg", content_type: "image/jpg")
 if dog1.save
   p "Chien créé"
 else
@@ -36,6 +44,7 @@ dog2 = Dog.new(name: "Ostia", breed: "Golden Retriver", age: 7,
               good_with_others_dogs: 3, good_with_chidren: 1,
               size: "Grand", neutered: true, good_with_water: 5,
               shadow_level: 5, sexe: "Female", user_id: user2.id)
+              dog2.photo.attach(io: file2, filename: "titi.jpg", content_type: "image/jpg")
 if dog2.save
   p "Chien 2 créé"
 else
@@ -56,11 +65,13 @@ dog3 = Dog.new(name: "Buddy", breed: "Teckel", age: 2,
               good_with_others_dogs: 5, good_with_chidren: 5,
               size: "Petit", neutered: true, good_with_water: 5,
               shadow_level: 3, sexe: "Female", user_id: user3.id)
+              dog3.photo.attach(io: file3, filename: "tata.jpg", content_type: "image/jpg")
 if dog3.save
   p "Chien 3 créé"
 else
   p "Soucis avec la création du chien"
 end
+
 
 # walk = Walk.new(start_address_longitude: 4.832184, start_address_latitude: 45.75783,
 #                 city: "Lyon", distance: 3.5, title: "Test balade",
