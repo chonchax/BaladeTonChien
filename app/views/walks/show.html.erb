@@ -1,5 +1,12 @@
 <div class="app_container">
-  <div class="bg-grey">
+
+  <div>
+    <div class="walk-title">
+      <%= link_to(dog_walks_path(current_user.dog), class:"text-decoration-none return") do %>
+        <i class="fa-solid fa-chevron-left"></i>
+      <% end %>
+      <h2><%= @walk.title%></h2>
+    </div>
     <div class="showmap"
       data-controller="map"
       data-map-markers-value="<%= @markers.to_json %>"
@@ -18,7 +25,6 @@
                                                           }%>
         </div>
         <div class="walk-data">
-          <h2><%= @walk.title%></h2>
           <p><strong>Ville : </strong><%=@walk.city %></p>
           <p><strong>Difficulté : </strong><%=@walk.difficulty.capitalize %></p>
           <p><strong>Distance (km) : </strong><%=@walk.distance%>km</p>
@@ -29,6 +35,8 @@
         <p><strong>Description : </strong><span data-controller="typed" data-typed-sentences-value="<%=[@walk.description] %>"></span></p>
       </div>
     </div>
+
   </div>
+
   <%= render "shared/footer" %>
 </div>
