@@ -3,7 +3,7 @@ class WalksController < ApplicationController
     @walks = Walk.all
 
     if params[:query].present?
-      sql_subquery = "title @@ :query OR description @@ :query"
+      sql_subquery = "title @@ :query OR description @@ :query OR difficulty @@ :query OR city @@ :query"
       @walks = @walks.where(sql_subquery, query: "%#{params[:query]}%")
     else
       @walks = Walk.all
