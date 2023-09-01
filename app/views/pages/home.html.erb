@@ -1,8 +1,5 @@
 
 <div class="containery">
-  <div class="main">
-    <%= image_tag "balade-ton-chien_720.png", class: "logi", alt: "logo", width: 20 %>
-  </div>
 
   <div class="center-container">
     <div class="dog">
@@ -41,8 +38,8 @@
   </div>
 
   <div class="boubou">
-    <%= link_to(dog_walks_path(current_user.dog), class:"text-decoration-none") do %>
-      <div class="bouton"> On y va ?</div>
+    <%= link_to(dog_walks_path(current_user.dog), class:"text-decoration-none bouton") do %>
+    On y va ?
     <% end %>
   </div>
 
