@@ -21,10 +21,6 @@ puts "image fonctionne"
 file8 = URI.open("https://www.empruntemontoutou.com/wp-content/uploads/2020/02/LEONBERG.jpg")
 puts "image fonctionne"
 
-
-
-
-
 p "Création d'un user "
 user1 = User.new(username: "Chonchax", email: "test@gmail.com", password: "azerty", address: "20 Rue des Capucins, Lyon")
 if user1.save
@@ -185,18 +181,6 @@ else
   p "Soucis avec la création du chien"
 end
 
-
-# walk = Walk.new(start_address_longitude: 4.832184, start_address_latitude: 45.75783,
-#                 city: "Lyon", distance: 3.5, title: "Test balade",
-#                 difficulty: 2, leash: true, water_presence: 3,
-#                 shadow_presence: 3)
-
-# if walk.save
-#   p "balade créé"
-# else
-#   p "Soucis avec la création de la balade"
-# end
-
 url = "https://data.grandlyon.com/geoserver/metropole-de-lyon/ows?SERVICE=WFS&VERSION=2.0.0&request=GetFeature&typename=metropole-de-lyon:evg_esp_veg.envpdiprboucle&outputFormat=application/json&SRSNAME=EPSG:4171&startIndex=0&sortBy=gid&count=100"
 
 puts "Je choppe la balade"
@@ -220,3 +204,22 @@ bug = Walk.where(title: "Jeu de Regards sur Méginand")
 bug.destroy(bug.ids)
 
 puts "bug destroy"
+
+geojsons_file_names = Dir.children("db/geojson")
+geojsons_file_names.each do |geojson_file_name|
+  file = File.read("db/geojson/#{geojson_file_name}")
+  json = JSON.parse(file)
+  Walk.create(
+    city: json['features'].last['properties']['city'],
+    title: json['features'].last['properties']['title'],
+    distance: json['features'].last['properties']['distance'],
+    difficulty: json['features'].last['properties']['difficulty'],
+    duration: json['features'].last['properties']['duration'],
+    description: json['features'].last['properties']['description'],
+    start_address_longitude: json['features'].last['properties']['start_address_longitude'],
+    start_address_latitude: json['features'].last['properties']['start_address_latitude'],
+    geometry: json['features'].last['geometry']
+  )
+end
+
+puts "balades dans lyon OK"
