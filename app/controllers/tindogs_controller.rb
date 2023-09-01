@@ -1,4 +1,5 @@
 class TindogsController < ApplicationController
+  @swiped_no = []
 
   def index
     if dogs_to_swipe.empty?
@@ -9,6 +10,11 @@ class TindogsController < ApplicationController
     end
   end
 
+  def next
+    # Dog.find(tindog_params)
+    # @swiped_no << @dog_id
+  end
+
   def create
     @tindog = Tindog.new(tindog_params)
     @tindog.sender_id = current_user.dog.id
@@ -16,8 +22,6 @@ class TindogsController < ApplicationController
     if match(@tindog)
       # rediriger vers chatroom
       @tindog.status = "match"
-      redirect_to tindogs_path
-    else
       redirect_to tindogs_path
     end
   end
@@ -37,7 +41,7 @@ class TindogsController < ApplicationController
     dogs_id = Dog.all.to_a.map(&:id)
     # supprime l'id de ton chien
     dogs_id.delete(current_user.dog.id)
-    # supprime l'id de tout less chiens que t'as déjà swipé (pending et match)
+    # supprime l'id de tout les chiens que t'as déjà swipé positif (pending et match)
     Tindog.all.each do |tindog|
       dogs_id.delete(tindog.receiver_id) if tindog.sender_id == current_user.dog.id
     end
