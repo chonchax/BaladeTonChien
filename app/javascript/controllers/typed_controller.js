@@ -8,7 +8,7 @@ export default class extends Controller {
   }
 
   connect() {
-    const options = {strings: this.sentencesValue, typeSpeed: 30, backDelay: 700}
+    const options = {strings: this.sentencesValue, typeSpeed: 10, backDelay: 700}
     new Typed(this.element, options)
   }
 }
