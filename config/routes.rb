@@ -11,5 +11,9 @@ Rails.application.routes.draw do
   get '/mydog', to: 'dogs#mydog', as: "my_dog"
 
   resources :users, only: %i[index]
-  resources :tindogs, only: %i[show]
+  resources :tindogs, only: %i[index create]
+
+  # erreur de t'as trop swipé
+  get '/noswipe', to: 'tindogs#noswipe', as: "no_swipe"
+
 end
