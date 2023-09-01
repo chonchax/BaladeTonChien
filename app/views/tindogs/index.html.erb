@@ -1,5 +1,9 @@
 
 <div class="app_container tindog-background">
+<%= simple_form_for @tindog do |f| %>
+  <%= f.submit "match", class: "btn btn-primary" %>
+  <%= f.input :receiver_id, :as => :hidden, :input_html => { :value => @dog.id } %>
+<% end %>
   <div class="center-everything">
     <%= cl_image_tag @dog.photo.key, class:"avatar-large", crop: :fill %>
     <h2> <%= @dog.name %> </h2>
@@ -23,4 +27,4 @@
   </div>
 </div>
 
-  <%= render "shared/footer" %>
+<%= render "shared/footer" %>
