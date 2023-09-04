@@ -200,9 +200,11 @@ walks['features'].each do |walk|
     geometry: walk['geometry']
   )
 end
-puts "jai fini de chopper"
-bug = Walk.where(title: "Jeu de Regards sur Méginand")
-bug.destroy(bug.ids)
+puts "jai fini de chopper, je fix les bugs"
+bug_one = Walk.where(title: "Jeu de Regards sur Méginand")
+Walk.destroy(bug_one.ids)
+bug_two = Walk.where(title: "Petit sentier du Bois du Fort")
+Walk.destroy(bug_two.ids)
 
 puts "bug destroy"
 
