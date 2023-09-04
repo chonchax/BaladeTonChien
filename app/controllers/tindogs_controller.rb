@@ -15,7 +15,9 @@ class TindogsController < ApplicationController
     @tindog.save
     if match(@tindog)
       # rediriger vers chatroom
-      @tindog.status = "match"
+      @match = Match.create
+      @message = Message.create(user: current_user, content: "", match: @match)
+      @message = Message.create(user: Dog.find(@tindog.receiver_id).user, content: "", match: @match)
       redirect_to tindogs_path
     else
       redirect_to tindogs_path
@@ -37,7 +39,7 @@ class TindogsController < ApplicationController
     dogs_id = Dog.all.to_a.map(&:id)
     # supprime l'id de ton chien
     dogs_id.delete(current_user.dog.id)
-    # supprime l'id de tout less chiens que t'as déjà swipé (pending et match)
+    # supprime l'id de tout les chiens que t'as déjà swipé (pending et match)
     Tindog.all.each do |tindog|
       dogs_id.delete(tindog.receiver_id) if tindog.sender_id == current_user.dog.id
     end
