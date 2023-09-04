@@ -13,7 +13,6 @@
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>">
     </div>
 
-
     <div class ="walk-card">
 
       <h2><%= @walk.title%></h2>
@@ -23,7 +22,7 @@
       </div>
       <div class="walk-infos">
         <p> <strong> <i class="fa-regular fa-map" ></i> </strong> <%= @walk.distance %> km</p>
-        <p><strong> <i class="fa-regular fa-clock"></i></strong> <%= @walk.duration %></p>
+        <p><strong> <i class="fa-regular fa-clock"></i></strong> <%= @walk.duration.to_i >= 60 ? Time.at(@walk.duration.to_i * 60).utc.strftime("%Hh%M") : Time.at(@walk.duration.to_i * 60).utc.strftime("%Mmin")  %></p>
       </div>
       <div class="walk-description">
         <%= image_tag "grand-parc-de-miribel.jpg", class:"walk-photo"%>
@@ -35,5 +34,4 @@
   </div>
 
   <%= render "shared/footer" %>
-
 </div>
