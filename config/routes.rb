@@ -13,7 +13,10 @@ Rails.application.routes.draw do
   resources :users, only: %i[index]
   resources :tindogs, only: %i[index create]
 
+  resources :matches, only: %i[show] do
+    resources :messages, only: %i[create]
+  end
+
   # erreur de t'as trop swipé
   get '/noswipe', to: 'tindogs#noswipe', as: "no_swipe"
-
 end
