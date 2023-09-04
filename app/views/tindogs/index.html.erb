@@ -4,18 +4,37 @@
     <%= cl_image_tag @dog.photo.key, class:"avatar-large", crop: :fill %>
     <h2> <%= @dog.name %> </h2>
     <div class="description-tindog">
-      <h3> <%=
-      "#{@dog.sexe}
-      #{@dog.neutered ? (@dog.sexe == "Femelle" ? "stérilisée": "stérilisé") : (@dog.sexe == "Femelle" ? "non stérilisée": "non stérilisé")}
-      de #{@dog.age} ans."
-      %> </h3>
+
       <p> <%=
-      "#{@dog.name} est un #{@dog.breed} #{@dog.energy < 3 ? "plutôt calme": "qui a besoin de se dépenser"}, et qui
+      "#{@dog.breed} de #{@dog.age} #{@dog.age > 1 ? "ans" : "an"} qui #{@dog.energy < 3 ? "plutôt calme": "qui a besoin de se dépenser"}, et qui
       #{@dog.good_with_strangers < 3 ? "s'entend pas bien avec les inconnus": "s'entend bien avec les inconnus"}."
       %> </p>
+      <div class="warnings">
+        <% if current_user.dog.good_with_others_dogs <= 3 && @dog.neutered == false && @dog.sexe == "Mâle" %>
+          <p><i class="fa-solid fa-triangle-exclamation negative"></i> Mâle non stérilisé  </p>
+          <% else %>
+          <p> <i class="fa-solid fa-venus-mars"></i> <%= "#{@dog.sexe} #{@dog.neutered ? (@dog.sexe == "Femelle" ? "stérilisée": "stérilisé") : (@dog.sexe == "Femelle" ? "non stérilisée": "non stérilisé")}" %>
+          </p>
+        <% end %>
+
+        <% if current_user.dog.good_with_chidren <= 3 && @dog.size == "Petit" %>
+          <p><i class="fa-solid fa-triangle-exclamation negative"></i> Chien de petite taille  </p>
+        <% end %>
+
+        <% if (current_user.dog.size == "Grand" || current_user.dog.size == "Moyen") && @dog.size == "Petit" %>
+          <p><i class="fa-solid fa-triangle-exclamation negative"></i> Préfère les balades courtes  </p>
+        <% end %>
+
+        <% if current_user.dog.energy <= 3 && @dog.energy > 3 %>
+          <p><i class="fa-solid fa-triangle-exclamation negative"></i> A l'habitude de balades plus dynamiques que <%= current_user.dog.name %> </p>
+        <% elsif current_user.dog.energy > 3 && @dog.energy <= 3 %>
+          <p><i class="fa-solid fa-triangle-exclamation negative"></i> A l'habitude de balades moins dynamiques que <%= current_user.dog.name %>  </p>
+        <% end %>
+      </div>
+
+
 
       <div class="card-trip-infos">
-
         <img src="https://images.emojiterra.com/openmoji/v13.1/512px/274c.png" class="card-trip-user-cross avatar-bordered" />
 
         <%= simple_form_for @tindog, class: "" do |f| %>
