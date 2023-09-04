@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_01_101956) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_04_075926) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -71,6 +71,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_01_101956) do
     t.index ["user_id"], name: "index_dogs_on_user_id"
   end
 
+  create_table "matches", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "user_id", null: false
+    t.bigint "match_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["match_id"], name: "index_messages_on_match_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "tindogs", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -121,6 +136,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_01_101956) do
   add_foreign_key "dog_walks", "dogs"
   add_foreign_key "dog_walks", "walks"
   add_foreign_key "dogs", "users"
+  add_foreign_key "messages", "matches"
+  add_foreign_key "messages", "users"
   add_foreign_key "tindogs", "dogs", column: "receiver_id"
   add_foreign_key "tindogs", "dogs", column: "sender_id"
 end

@@ -21,7 +21,9 @@ class TindogsController < ApplicationController
     @tindog.save
     if match(@tindog)
       # rediriger vers chatroom
-      @tindog.status = "match"
+      @match = Match.create
+      @message = Message.create(user: current_user, content: "", match: @match)
+      @message = Message.create(user: Dog.find(@tindog.receiver_id).user, content: "", match: @match)
       redirect_to tindogs_path
     end
   end
