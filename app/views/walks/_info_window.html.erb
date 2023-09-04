@@ -3,9 +3,9 @@
     <%= image_tag "balade.jpg"%>
     <div class="walk-description fit">
       <h2><%= walk.title %></h2>
-      <p> <i class="fa-regular fa-map" style="width:20px"></i> <%= walk.distance %> km</p>
-      <p> <i class="fa-solid fa-arrow-trend-up" style="width:20px"></i> <%= walk.difficulty %></p>
-      <p> <i class="fa-solid fa-location-dot" style="width:20px"></i> <%= walk.city %></p>
+      <p> <i class="fa-regular fa-map"></i> <%= walk.distance %> km</p>
+      <p> <i class="fa-solid fa-arrow-trend-up"></i> <%= walk.difficulty.capitalize %></p>
+      <p> <i class="fa-solid fa-location-dot"></i> <%= walk.city %></p>
     </div>
   </div>
 <% end %>

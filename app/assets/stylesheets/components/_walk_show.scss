@@ -3,16 +3,19 @@
   // top commence à la fin de la map, -2 pour donner l'impression que la card est au dessus
   border-radius: 20px;
   background-color: white;
-  text-align: center;
+  text-align: start;
   padding: 5%;
-  // valider qu'on puisse scroller si textes long
+
+  h2 {
+    margin-bottom: 16px;
+  }
 }
 
 .walk-infos {
   display: flex;
-  // align-items: center;
   flex-wrap: wrap;
   align-content: space-around;
+  line-height: 0.5rem;
   gap: 8%;
 }
 
@@ -23,20 +26,21 @@
 .walk-photo {
   width: 100%;
   border-radius: 30px;
-  padding: 3px;
-  margin-bottom: 3px;
+  margin-bottom: 4px;
   max-height: 160px;
   object-fit: cover;
+  margin-top: 16px
 }
 
 strong {
   color: #116D6E;
+  margin-right: 8px;
 }
 
 
 .walk-description > p {
   text-align: left;
-  margin-top: 5px;
+  margin: 16px 0px;
 }
 
 
