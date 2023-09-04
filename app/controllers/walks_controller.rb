@@ -2,6 +2,15 @@ class WalksController < ApplicationController
   def index
     @walks = Walk.all
 
+    if params[:difficulty].present?
+      @walks.where(difficulty: "#{params[:difficulty]}")
+      
+    end
+
+    if params[:distance].present?
+      @walks.where(distance: "#{params[:distance]}")
+    end
+
     if params[:query].present?
       sql_subquery = "title @@ :query OR description @@ :query OR difficulty @@ :query OR city @@ :query"
       @walks = @walks.where(sql_subquery, query: "%#{params[:query]}%")
