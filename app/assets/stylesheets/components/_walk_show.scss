@@ -1,73 +1,57 @@
 .walk-card {
-  bottom: 9px;
+  top: -2vh;
+  // top commence à la fin de la map, -2 pour donner l'impression que la card est au dessus
+  border-radius: 20px;
+  background-color: white;
+  text-align: center;
+  padding: 5%;
+  // valider qu'on puisse scroller si textes long
 }
 
 .walk-infos {
   display: flex;
-  align-items: center;
-  padding: 5%;
+  // align-items: center;
+  flex-wrap: wrap;
+  align-content: space-around;
+  gap: 8%;
 }
 
 .walk-photo {
   width: 30%;
 }
 
-.walk-photo > img {
+.walk-photo {
   width: 100%;
-  border-radius: 20px;
-  height: 100px;
+  border-radius: 30px;
   padding: 3px;
-  transition: all 0.25s ease;
-
-  &.big {
-    position: fixed;
-    top: 50vh;
-    z-index: 50;
-    transform: scale(1);
-    height: 150px;
-    max-width: 90vw;
-  }
+  margin-bottom: 3px;
+  max-height: 160px;
+  object-fit: cover;
 }
-
-.walk-data {
-  padding-left: 10px;
-  line-height: 1em;
-  p {
-    margin: 0.3em;
-  }
-}
-
 
 strong {
   color: #116D6E;
 }
 
-.walk-description {
-  margin: 0 1em 1em 1em;
+
+.walk-description > p {
+  text-align: left;
+  margin-top: 5px;
 }
 
-.walk-description p{
-  margin-bottom: 0.6em;
-}
 
-
-.walk-title {
-  background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
-  padding: 5%;
-  display: flex;
-  align-items: center;
-
-  h2, a {
-    color: white;
-    font-weight: bold;
-    text-align: center;
-    font-size: 20px;
-    margin: 0px;
-  }
-
-  h2 {
-    flex-grow: 3;
-  }
-
-
+.return-btn {
+  z-index: 50;
+  padding: 8px;
+  position: fixed;
+  text-align:center;
+  justify-content: center;
+  color: black;
+  background-color: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 50%;
+  left: 20px;
+  top: 20px;
+  width: 40px;
+  height: 40px;
 }
