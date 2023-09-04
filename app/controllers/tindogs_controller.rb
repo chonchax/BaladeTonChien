@@ -1,4 +1,5 @@
 class TindogsController < ApplicationController
+  @swiped_no = []
 
   def index
     if dogs_to_swipe.empty?
@@ -7,6 +8,11 @@ class TindogsController < ApplicationController
       @dog = Dog.find(dogs_to_swipe.sample)
       @tindog = Tindog.new
     end
+  end
+
+  def next
+    # Dog.find(tindog_params)
+    # @swiped_no << @dog_id
   end
 
   def create
@@ -18,8 +24,6 @@ class TindogsController < ApplicationController
       @match = Match.create
       @message = Message.create(user: current_user, content: "", match: @match)
       @message = Message.create(user: Dog.find(@tindog.receiver_id).user, content: "", match: @match)
-      redirect_to tindogs_path
-    else
       redirect_to tindogs_path
     end
   end
@@ -39,7 +43,7 @@ class TindogsController < ApplicationController
     dogs_id = Dog.all.to_a.map(&:id)
     # supprime l'id de ton chien
     dogs_id.delete(current_user.dog.id)
-    # supprime l'id de tout les chiens que t'as déjà swipé (pending et match)
+    # supprime l'id de tout les chiens que t'as déjà swipé positif (pending et match)
     Tindog.all.each do |tindog|
       dogs_id.delete(tindog.receiver_id) if tindog.sender_id == current_user.dog.id
     end

@@ -10,7 +10,7 @@
 .tag-selector + label {
   cursor: pointer;
   display: inline-block;
-  font-size: 0.8rem;
+  // font-size: 0.8rem;
   border-radius: 50rem;
   padding: 0.1rem 0.5rem;
   background-color: #116D6E;
@@ -41,13 +41,13 @@
   border: none;
   padding-top: 1%;
   padding-bottom: 1%;
-  font-size: 0.7rem;
+  // font-size: 0.7rem;
   width: 100%
 }
 
 .dog-avatar {
-  width: 50vw;
-  height: 50vw;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
