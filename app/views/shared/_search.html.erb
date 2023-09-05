@@ -13,21 +13,12 @@
   <% end %>
 
   <div class="filters">
-    <div class="filter" data-action="click->map#updateMarkers" data-type="difficulty" data-value="facile">
-      facile
-    </div>
-    <div class="filter" data-action="click->map#updateMarkers" data-type="difficulty" data-value="moyen">
-      moyen
-    </div>
-    <div class="filter" data-action="click->map#updateMarkers" data-type="difficulty" data-value="difficile">
-      difficile
-    </div>
-    <div class="filter" data-action="click->map#updateMarkers" data-type="distance" data-value="moins de 3km">
-      distance de moins de 3km
-    </div>
-    <div class="filter" data-action="click->map#updateMarkers" data-type="distance" data-value="plus de 3km">
-      distance de plus de 3km
-    </div>
-  </div>
+    <%= link_to "Facile", dog_walks_path(@dog, difficulty: 'facile'), class: "filter-link" %>
+    <%= link_to "Moyen", dog_walks_path(@dog, difficulty: 'moyen'), class: "filter-link" %>
+    <%= link_to "Difficile", dog_walks_path(@dog, difficulty: 'difficile'), class: "filter-link" %>
+    <%= link_to "Inférieures à 1h", dog_walks_path(@dog, duration: 60), class: "filter-link" %>
+    <%= link_to "Inférieures à 5km", dog_walks_path(@dog, distance: 5), class: "filter-link" %>
+    <%= link_to "All", dog_walks_path(@dog, @walks), class: "filter-link" %>
 
+  </div>
 </div>

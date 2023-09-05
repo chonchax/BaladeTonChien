@@ -166,27 +166,27 @@ export default class extends Controller {
     }
   }
 
-  updateMarkers(event) {
-    console.log("update markers")
-    console.log(event.currentTarget.dataset.type);
-    console.log(event.currentTarget.dataset.value);
-    // récupérer la valeur du nouveau filtre
+  // updateMarkers(event) {
+  //   console.log("update markers")
+  //   console.log(event.currentTarget.dataset.type);
+  //   console.log(event.currentTarget.dataset.value);
+  //   // récupérer la valeur du nouveau filtre
 
-    // fetch vers l'index de walks avec le filter, récuperer en json les markers
-    const url = `http://localhost:3000/dogs/29/walks?${event.currentTarget.dataset.type}=${event.currentTarget.dataset.value}`
+  //   // fetch vers l'index de walks avec le filter, récuperer en json les markers
+  //   const url = `/dogs/29/walks?${event.currentTarget.dataset.type}=${event.currentTarget.dataset.value}`
 
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        // data.forEach(marker)
+  //   fetch(url)
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       // data.forEach(marker)
 
-        console.log(data);
-      })
-
-
+  //       console.log(data);
+  //     })
 
 
-  }
+
+
+  // }
 
 
 

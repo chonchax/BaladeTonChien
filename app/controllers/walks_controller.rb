@@ -8,8 +8,16 @@ class WalksController < ApplicationController
       p @walks.count
     end
 
+    if params[:duration].present?
+      puts params[:duration]
+      @walks = @walks.where("walks.duration <= ?", params[:duration])
+      p @walks.count
+    end
+
     if params[:distance].present?
-      @walks.where(distance: "#{params[:distance]}")
+      puts params[:distance]
+      @walks = @walks.where("walks.distance <= ?", params[:distance])
+      p @walks.count
     end
 
     if params[:query].present?
@@ -29,23 +37,23 @@ class WalksController < ApplicationController
       }
     end
 
-    if params[:difficulty].present?
-      respond_to do |format|
-        format.json { render json: @markers }
-      end
-      # @markers = @walks.map do |walk|
-      #   {
-      #     lat: walk.lat,
-      #     lng: walk.lng
-      #   }
-      # end
-    end
+    # if params[:difficulty].present?
+    #   respond_to do |format|
+    #     format.json { render json: @markers }
+    #   end
+    #   # @markers = @walks.map do |walk|
+    #   #   {
+    #   #     lat: walk.lat,
+    #   #     lng: walk.lng
+    #   #   }
+    #   # end
+    # end
 
-    if params[:distance].present?
-      respond_to do |format|
-        format.json { render json: @markers }
-      end
-    end
+    # if params[:duration].present?
+    #   respond_to do |format|
+    #     format.json { render json: @markers }
+    #   end
+    # end
 
     # si on veut que le current user
 
