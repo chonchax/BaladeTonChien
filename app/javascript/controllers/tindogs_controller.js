@@ -3,7 +3,6 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static targets = ["card"];
-  static values  = { receiverId: Number };
 
   connect() {
     this.initializeCards()
@@ -72,10 +71,11 @@ export default class extends Controller {
               })
             })
               .then(response => response.text())
-              .then(data => data)
-          }
-          else {
-
+              .then(data => {
+                setTimeout(() => {
+                  tinderContainer.innerHTML += data
+                }, 1000);
+              })
           }
 
           const endX = Math.max(Math.abs(event.velocityX) * moveOutWidth, moveOutWidth);
@@ -127,6 +127,10 @@ export default class extends Controller {
 
   love() {
   (true);
+  }
+
+  remove(event) {
+    event.currentTarget.remove()
   }
 
 }
