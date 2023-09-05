@@ -2,11 +2,19 @@ class WalksController < ApplicationController
   def index
     @walks = Walk.all
 
+    if params[:difficulty].present?
+      puts params[:difficulty]
+      @walks = Walk.where(difficulty: "#{params[:difficulty]}")
+      p @walks.count
+    end
+
+    if params[:distance].present?
+      @walks.where(distance: "#{params[:distance]}")
+    end
+
     if params[:query].present?
       sql_subquery = "title @@ :query OR description @@ :query OR difficulty @@ :query OR city @@ :query"
       @walks = @walks.where(sql_subquery, query: "%#{params[:query]}%")
-    else
-      @walks = Walk.all
     end
 
     @dog = current_user.dog
@@ -19,6 +27,24 @@ class WalksController < ApplicationController
         info_window_html: render_to_string(partial: "info_window", locals: { walk: walk }),
         marker_html: render_to_string(partial: "marker")
       }
+    end
+
+    if params[:difficulty].present?
+      respond_to do |format|
+        format.json { render json: @markers }
+      end
+      # @markers = @walks.map do |walk|
+      #   {
+      #     lat: walk.lat,
+      #     lng: walk.lng
+      #   }
+      # end
+    end
+
+    if params[:distance].present?
+      respond_to do |format|
+        format.json { render json: @markers }
+      end
     end
 
     # si on veut que le current user

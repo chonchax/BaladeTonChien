@@ -1,6 +1,5 @@
 
 <div class="app_container tindog-background">
-
   <div class="tinder" data-controller="tindogs">
     <div class="tinder--status">
       <i class="fa fa-remove"></i>
@@ -9,21 +8,39 @@
     <div class="tinder--cards">
       <% @dogs.each do |dog| %>
         <div class="tinder--card" data-tindogs-target="card" data-receiver-id="<%= dog.id %>">
-          <%= cl_image_tag dog.photo.key, class:"avatar-large", crop: :fill %>
-          <h3><%= dog.name %></h3>
-          <h4>
-            <%= "#{dog.sexe}
-            #{dog.neutered ? (dog.sexe == "Femelle" ? "stérilisée": "stérilisé") : (dog.sexe == "Femelle" ? "non stérilisée": "non stérilisé")}
-            de #{dog.age} ans." %>
-          <h4>
-          <p>
-            <%= "#{dog.name} est un #{dog.breed} #{dog.energy < 3 ? "plutôt calme": "qui a besoin de se dépenser"}, et qui
-            #{dog.good_with_strangers < 3 ? "s'entend pas bien avec les inconnus": "s'entend bien avec les inconnus"}." %>
-          </p>
+          <div class="center-everything">
+            <%= cl_image_tag dog.photo.key, class:"avatar-large", crop: :fill %>
+            <h2> <%= dog.name %> </h2>
+            <div class="description-tindog">
+              <p> <%=
+              "#{dog.breed} de #{dog.age} #{dog.age > 1 ? "ans" : "an"} qui #{dog.energy < 3 ? "plutôt calme": "qui a besoin de se dépenser"}, et qui
+              #{dog.good_with_strangers < 3 ? "s'entend pas bien avec les inconnus": "s'entend bien avec les inconnus"}."
+              %>
+              </p>
+              <div class="warnings">
+                <% if current_user.dog.good_with_others_dogs <= 3 && dog.neutered == false && dog.sexe == "Mâle" %>
+                  <p><i class="fa-solid fa-triangle-exclamation negative"></i> Mâle non stérilisé  </p>
+                  <% else %>
+                  <p> <i class="fa-solid fa-venus-mars"></i> <%= "#{dog.sexe} #{dog.neutered ? (dog.sexe == "Femelle" ? "stérilisée": "stérilisé") : (dog.sexe == "Femelle" ? "non stérilisée": "non stérilisé")}" %>
+                  </p>
+                <% end %>
+                <% if current_user.dog.good_with_chidren <= 3 && dog.size == "Petit" %>
+                  <p><i class="fa-solid fa-triangle-exclamation negative"></i> Chien de petite taille  </p>
+                <% end %>
+                <% if (current_user.dog.size == "Grand" || current_user.dog.size == "Moyen") && dog.size == "Petit" %>
+                  <p><i class="fa-solid fa-triangle-exclamation negative"></i> Préfère les balades courtes  </p>
+                <% end %>
+                <% if current_user.dog.energy <= 3 && dog.energy > 3 %>
+                  <p><i class="fa-solid fa-triangle-exclamation negative"></i> A l'habitude de balades plus dynamiques que <%= current_user.dog.name %> </p>
+                <% elsif current_user.dog.energy > 3 && dog.energy <= 3 %>
+                  <p><i class="fa-solid fa-triangle-exclamation negative"></i> A l'habitude de balades moins dynamiques que <%= current_user.dog.name %>  </p>
+                <% end %>
+              </div>
+            </div>
+          </div>
         </div>
       <% end %>
     </div>
-
     <div class="tinder--buttons">
       <button id="nope" data-action="click->tindogs#nope"><i class="fa fa-remove"></i></button>
       <button id="love" data-action="click->tindogs#love"><i class="fa fa-heart"></i></button>

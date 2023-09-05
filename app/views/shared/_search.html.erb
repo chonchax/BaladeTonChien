@@ -1,11 +1,33 @@
-<%= form_with url: dog_walks_path, method: :get, class: "simple_form search" do %>
-  <div class="search-form-control form-group ">
-    <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Rechercher une balade" %>
-    <button type="submit" class="btn btn-flat">
-      <i class="fas fa-search"></i>
-    </button>
+<div class="search-container">
+
+  <%= form_with url: dog_walks_path, method: :get, class: "simple_form search" do %>
+    <div class="search-form-control form-group ">
+      <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Rechercher une balade" %>
+      <button type="submit" class="btn btn-flat">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+  <% end %>
+
+  <div class="filters">
+    <div class="filter" data-action="click->map#updateMarkers" data-type="difficulty" data-value="facile">
+      facile
+    </div>
+    <div class="filter" data-action="click->map#updateMarkers" data-type="difficulty" data-value="moyen">
+      moyen
+    </div>
+    <div class="filter" data-action="click->map#updateMarkers" data-type="difficulty" data-value="difficile">
+      difficile
+    </div>
+    <div class="filter" data-action="click->map#updateMarkers" data-type="distance" data-value="moins de 3km">
+      distance de moins de 3km
+    </div>
+    <div class="filter" data-action="click->map#updateMarkers" data-type="distance" data-value="plus de 3km">
+      distance de plus de 3km
+    </div>
   </div>
-<% end %>
+
+</div>

@@ -1,4 +1,7 @@
-<div class="app_container">
+<div class="app_container" 
+    data-controller="map" 
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>">
 
   <%= render "shared/search" %>
 
@@ -18,10 +21,7 @@
     <a id="museums" href="#" class>museums</a>
   </nav> %>
 
-  <div class="indexmap" id="map"
-    data-controller="map"
-    data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>">
+  <div class="indexmap" id="map" data-map-target="map">
   </div>
 
   <%= render "shared/footer" %>

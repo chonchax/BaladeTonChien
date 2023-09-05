@@ -1,15 +1,17 @@
 require 'open-uri'
 require 'json'
 # il faut créer un user et associer le chien au user
-Tindog.destroy_all
+# Tindog.destroy_all
 User.destroy_all
 Walk.destroy_all
+Message.destroy_all
+Match.destroy_all
 
-file1 = URI.open("https://img.freepik.com/photos-premium/vue-face-petit-chien-mignon_23-2148423593.jpg")
+file1 = URI.open("https://img.freepik.com/free-photo/cute-sweet-puppy-australian-shepherd-pet-posing-isolated-white-wall_155003-36677.jpg?w=996&t=st=1693843042~exp=1693843642~hmac=b53178c2e84b47060efaeffb9a3389c35a4ae985fdd6b62ff3fe1d8ca6ca4615")
 puts "image fonctionne"
-file2 = URI.open("https://selcius.fr/wp-content/uploads/2021/08/spits-nain-court.jpg")
+file2 = URI.open("https://images.pexels.com/photos/2409503/pexels-photo-2409503.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")
 puts "image fonctionne"
-file3 = URI.open("https://i.ytimg.com/vi/wdqJ03HcGVI/maxresdefault.jpg")
+file3 = URI.open("https://www.chien.fr/assets/img/000/107/og-image/teckel.jpg")
 puts "image fonctionne"
 file4 = URI.open("https://www.eleveurs-online.com/data/eleveur/140/1600-139061.253.jpg")
 puts "image fonctionne"
@@ -90,7 +92,7 @@ else
   p "Soucis avec la création du user"
 end
 
-dog4 = Dog.new(name: "Ren", breed: "Berger-Australien", age: 3,
+dog4 = Dog.new(name: "Ren", breed: "Berger Australien", age: 3,
               energy: 5, playfulness: 5, good_with_strangers: 5,
               good_with_others_dogs: 4, good_with_chidren: 5,
               size: "Moyen", neutered: true, good_with_water: 5,
@@ -200,9 +202,11 @@ walks['features'].each do |walk|
     geometry: walk['geometry']
   )
 end
-puts "jai fini de chopper"
-bug = Walk.where(title: "Jeu de Regards sur Méginand")
-bug.destroy(bug.ids)
+puts "jai fini de chopper, je fix les bugs"
+bug_one = Walk.where(title: "Jeu de Regards sur Méginand")
+Walk.destroy(bug_one.ids)
+bug_two = Walk.where(title: "Petit sentier du Bois du Fort")
+Walk.destroy(bug_two.ids)
 
 puts "bug destroy"
 

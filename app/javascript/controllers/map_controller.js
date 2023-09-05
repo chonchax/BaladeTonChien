@@ -2,6 +2,8 @@ import { Controller } from "@hotwired/stimulus"
 import mapboxgl from 'mapbox-gl' // Don't forget this!
 
 export default class extends Controller {
+  static targets = ["map"]
+
   static values = {
     apiKey: String,
     markers: Array,
@@ -13,7 +15,7 @@ export default class extends Controller {
     mapboxgl.accessToken = this.apiKeyValue
 
     this.map = new mapboxgl.Map({
-      container: this.element,
+      container: this.mapTarget,
       style: "mapbox://styles/cameliaasb/cll0p0q0z009h01pmetfpa29d"
     })
     this.#addMarkersToMap()
@@ -164,4 +166,31 @@ export default class extends Controller {
     }
   }
 
+  updateMarkers(event) {
+    console.log("update markers")
+    console.log(event.currentTarget.dataset.type);
+    console.log(event.currentTarget.dataset.value);
+    // récupérer la valeur du nouveau filtre
+
+    // fetch vers l'index de walks avec le filter, récuperer en json les markers
+    const url = `http://localhost:3000/dogs/29/walks?${event.currentTarget.dataset.type}=${event.currentTarget.dataset.value}`
+
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        // data.forEach(marker)
+
+        console.log(data);
+      })
+
+
+
+
+  }
+
+
+
+
+    // mettre à jour la map avec les markers
+    // this.map.markers
 }

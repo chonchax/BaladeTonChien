@@ -1,0 +1,20 @@
+.message-row {
+  margin-bottom: 10px;
+}
+
+// To style the message itself
+.sender-style, .receiver-style {
+  max-width: 400px;
+  padding: 8px 16px 0px 16px;
+}
+
+.sender-style {
+  background-color: #C8E6C3;
+  border-radius: 28px 16px 0px 28px;
+}
+
+.receiver-style {
+  background-color: #ECECEC;
+  border-radius: 16px 28px 28px 0px;
+
+}
