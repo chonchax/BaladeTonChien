@@ -2,7 +2,8 @@ class TindogsController < ApplicationController
   @swiped_no = []
 
   def index
-    @dogs = Dog.where.not(id: current_user.dog.id)
+    tindogs_ids = current_user.dog.tindogs.pluck(:receiver_id)
+    @dogs = Dog.where.not(id: tindogs_ids.push(current_user.dog.id))
     if dogs_to_swipe.empty?
       redirect_to no_swipe_path
     else
