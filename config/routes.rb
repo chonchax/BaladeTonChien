@@ -19,4 +19,5 @@ Rails.application.routes.draw do
 
   # erreur de t'as trop swipé
   get '/noswipe', to: 'tindogs#noswipe', as: "no_swipe"
+  
 end

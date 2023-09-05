@@ -1,0 +1,29 @@
+.its {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  bottom: 300px;
+  z-index: 4;
+
+
+}
+
+.matchi {
+  text-align: center;
+}
+
+.chien1 {
+  position: relative;
+  margin-right: 100px;
+  margin-top: 40px;
+}
+
+.chien2 {
+  position: absolute;
+  top: 0;
+  right: -100px;
+}
+
+.les2 {
+  justify-content: center ;
+}

@@ -16,3 +16,12 @@
   height: 50vh;
 }
 
+.contain {
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 20vh;
+  color: black;
+  z-index: 2;
+}

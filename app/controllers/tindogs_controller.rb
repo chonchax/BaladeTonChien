@@ -20,13 +20,12 @@ class TindogsController < ApplicationController
     @tindog = Tindog.new(tindog_params)
     @tindog.sender_id = current_user.dog.id
     @tindog.save
-    if match(@tindog)
-      # rediriger vers chatroom
-      @match = Match.create
+    # if match(@tindog)
+      @match = Match.create 
       @message = Message.create(user: current_user, content: "", match: @match)
       @message = Message.create(user: Dog.find(@tindog.receiver_id).user, content: "", match: @match)
-      redirect_to tindogs_path
-    end
+      render partial: "matches/its_a_match", locals: {tindog: @tindog }, formats: :html
+    # end
   end
 
   def noswipe
