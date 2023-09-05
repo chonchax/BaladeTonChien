@@ -1,14 +1,16 @@
 class TindogsController < ApplicationController
 
   def index
-    @dogs = Dog.where.not(id: current_user.dog.id)
+
+    tindogs_ids = current_user.dog.tindogs.pluck(:receiver_id)
+    @dogs = Dog.where.not(id: tindogs_ids.push(current_user.dog.id))
     # la suite n'est plus appelée
-    if dogs_to_swipe.empty?
-      redirect_to no_swipe_path
-    else
-      @dog = Dog.find(dogs_to_swipe.sample)
-      @tindog = Tindog.new
-    end
+    # if dogs_to_swipe.empty?
+    #  redirect_to no_swipe_path
+    # else
+    #  @dog = Dog.find(dogs_to_swipe.sample)
+    #  @tindog = Tindog.new
+    # end
   end
 
   def create
