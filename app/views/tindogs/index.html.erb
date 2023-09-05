@@ -1,34 +1,35 @@
 
 <div class="app_container tindog-background">
-  <div class="center-everything">
-    <%= cl_image_tag @dog.photo.key, class:"avatar-large", crop: :fill %>
-    <h2> <%= @dog.name %> </h2>
-    <div class="description-tindog">
-      <h3> <%=
-      "#{@dog.sexe}
-      #{@dog.neutered ? (@dog.sexe == "Femelle" ? "stérilisée": "stérilisé") : (@dog.sexe == "Femelle" ? "non stérilisée": "non stérilisé")}
-      de #{@dog.age} ans."
-      %> </h3>
-      <p> <%=
-      "#{@dog.name} est un #{@dog.breed} #{@dog.energy < 3 ? "plutôt calme": "qui a besoin de se dépenser"}, et qui
-      #{@dog.good_with_strangers < 3 ? "s'entend pas bien avec les inconnus": "s'entend bien avec les inconnus"}."
-      %> </p>
 
-      <div class="card-trip-infos">
+  <div class="tinder" data-controller="tindogs">
+    <div class="tinder--status">
+      <i class="fa fa-remove"></i>
+      <i class="fa fa-heart"></i>
+    </div>
+    <div class="tinder--cards">
+      <% @dogs.each do |dog| %>
+        <div class="tinder--card" data-tindogs-target="card" data-receiver-id="<%= dog.id %>">
+          <%= cl_image_tag dog.photo.key, class:"avatar-large", crop: :fill %>
+          <h3><%= dog.name %></h3>
+          <h4>
+            <%= "#{dog.sexe}
+            #{dog.neutered ? (dog.sexe == "Femelle" ? "stérilisée": "stérilisé") : (dog.sexe == "Femelle" ? "non stérilisée": "non stérilisé")}
+            de #{dog.age} ans." %>
+          <h4>
+          <p>
+            <%= "#{dog.name} est un #{dog.breed} #{dog.energy < 3 ? "plutôt calme": "qui a besoin de se dépenser"}, et qui
+            #{dog.good_with_strangers < 3 ? "s'entend pas bien avec les inconnus": "s'entend bien avec les inconnus"}." %>
+          </p>
+        </div>
+      <% end %>
+    </div>
 
-        <img src="https://images.emojiterra.com/openmoji/v13.1/512px/274c.png" class="card-trip-user-cross avatar-bordered" />
-
-        <%= simple_form_for @tindog, class: "" do |f| %>
-          <%= f.input :receiver_id, as: :hidden, input_html: { value: @dog.id } %>
-          <button type="submit" class="avatar-bordered card-trip-user-heart">
-            <img src="https://images.emojiterra.com/google/noto-emoji/unicode-15/animated/1f49a.gif" />
-          </button>
-        <% end %>
-      </div>
-
-
+    <div class="tinder--buttons">
+      <button id="nope" data-action="click->tindogs#nope"><i class="fa fa-remove"></i></button>
+      <button id="love" data-action="click->tindogs#love"><i class="fa fa-heart"></i></button>
     </div>
   </div>
-</div>
 
-<%= render "shared/footer" %>
+  <%= render "shared/footer" %>
+
+</div>
