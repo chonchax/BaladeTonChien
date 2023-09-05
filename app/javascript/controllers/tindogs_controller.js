@@ -72,8 +72,9 @@ export default class extends Controller {
             })
               .then(response => response.text())
               .then(data => {
+                console.log(data);
                 setTimeout(() => {
-                  tinderContainer.innerHTML += data
+                  tinderContainer.insertAdjacentHTML("beforeend", data)
                 }, 1000);
               })
           }
