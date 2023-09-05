@@ -1,4 +1,5 @@
 <div class="app_container indexmap"
+
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>">
@@ -24,6 +25,14 @@
   <div class="indexmap" id="map" data-map-target="map">
   </div>
 
-  <%= render "shared/footer" %>
+  <div class="filters">
+    <%= filter("difficulty", "facile", "Facile") %>
+    <%= filter("difficulty", "moyen", "Moyen") %>
+    <%= filter("difficulty", "difficile", "Difficile") %>
+    <%= filter("duration", "60", "Moins de 1h ") %>
+    <%= filter("distance", "5", "Moins de 5km") %>
+  </div>
 
+
+  <%= render "shared/footer" %>
 </div>
