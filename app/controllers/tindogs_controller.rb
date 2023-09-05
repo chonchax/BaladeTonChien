@@ -1,20 +1,16 @@
 class TindogsController < ApplicationController
-  @swiped_no = []
 
   def index
+
     tindogs_ids = current_user.dog.tindogs.pluck(:receiver_id)
     @dogs = Dog.where.not(id: tindogs_ids.push(current_user.dog.id))
-    if dogs_to_swipe.empty?
-      redirect_to no_swipe_path
-    else
-      @dog = Dog.find(dogs_to_swipe.sample)
-      @tindog = Tindog.new
-    end
-  end
-
-  def next
-    # Dog.find(tindog_params)
-    # @swiped_no << @dog_id
+    # la suite n'est plus appelée
+    # if dogs_to_swipe.empty?
+    #  redirect_to no_swipe_path
+    # else
+    #  @dog = Dog.find(dogs_to_swipe.sample)
+    #  @tindog = Tindog.new
+    # end
   end
 
   def create
@@ -22,7 +18,6 @@ class TindogsController < ApplicationController
     @tindog.sender_id = current_user.dog.id
     @tindog.save
     if match(@tindog)
-      # rediriger vers chatroom
       @match = Match.create
       @message = Message.create(user: current_user, content: "", match: @match)
       @message = Message.create(user: Dog.find(@tindog.receiver_id).user, content: "", match: @match)
@@ -35,7 +30,7 @@ class TindogsController < ApplicationController
 
   def match(tindog)
     Tindog.where(
-      receiver_id: current_user.dog.id,
+      receiver_id: tindog.sender_id,
       sender_id: tindog.receiver_id
     ).any?
   end
