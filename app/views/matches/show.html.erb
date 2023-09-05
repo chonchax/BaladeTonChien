@@ -3,7 +3,13 @@
      data-match-subscription-match-id-value="<%= @match.id%>"
      data-match-subscription-current-user-id-value="<%= current_user.id%>"
 >
-  <h1>Discussion</h1>
+  <div class="top">
+    <%= link_to(matches_path, class:"text-decoration-none") do %>
+      <i class="fa-solid fa-chevron-left"></i>
+    <% end %>
+    <h3> <%= @user.username %> </h3>
+  </div>
+
 
   <div class="messages"
        data-match-subscription-target="messages"

@@ -25,11 +25,8 @@ export default class extends Controller {
   movecard() {
     const caards = this.cardTargets
     const tinderContainer = this.element
-
     this.cardTargets.forEach(function (el) {
       const hammertime = new Hammer(el)
-
-
       hammertime.on('pan', function (event) {
         el.classList.add('moving');
         if (event.deltaX === 0) return;
@@ -45,7 +42,6 @@ export default class extends Controller {
       });
 
       hammertime.on("panend", (event) => {
-        console.log(el.dataset.receiverId)
 
         el.classList.remove("moving");
         tinderContainer.classList.remove("tinder_love");
@@ -76,7 +72,10 @@ export default class extends Controller {
               })
             })
               .then(response => response.text())
-              .then(data => console.log(data))
+              .then(data => data)
+          }
+          else {
+
           }
 
           const endX = Math.max(Math.abs(event.velocityX) * moveOutWidth, moveOutWidth);
