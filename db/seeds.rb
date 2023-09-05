@@ -4,6 +4,8 @@ require 'json'
 Tindog.destroy_all
 User.destroy_all
 Walk.destroy_all
+Message.destroy_all
+Match.destroy_all
 
 file1 = URI.open("https://img.freepik.com/photos-premium/vue-face-petit-chien-mignon_23-2148423593.jpg")
 puts "image fonctionne"

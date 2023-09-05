@@ -168,21 +168,29 @@ export default class extends Controller {
 
   updateMarkers(event) {
     console.log("update markers")
-    console.log(event.currentTarget.dataset.difficulty);
+    console.log(event.currentTarget.dataset.type);
+    console.log(event.currentTarget.dataset.value);
     // récupérer la valeur du nouveau filtre
 
-    // fetch vers l'index de walks avec le filter, récuperer en json les markers 
-    const url = `http://localhost:3000/dogs/29/walks?${type}=${value}`
+    // fetch vers l'index de walks avec le filter, récuperer en json les markers
+    const url = `http://localhost:3000/dogs/29/walks?${event.currentTarget.dataset.type}=${event.currentTarget.dataset.value}`
 
-    fetch(`http://localhost:3000/dogs/29/walks?${type}=${value}`)
+    fetch(url)
       .then(response => response.json())
-      .then(data => this.updateMarkers(data))
+      .then(data => {
+        // data.forEach(marker)
+
+        console.log(data);
+      })
+
+
+
+
   }
 
 
 
 
-    // mettre à jour la map avec les markers 
+    // mettre à jour la map avec les markers
     // this.map.markers
-  }
-
+}

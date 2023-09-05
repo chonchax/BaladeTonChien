@@ -1,4 +1,4 @@
-<div class="app_container">
+<div class="app_container" >
 
   <div>
     <%= link_to(dog_walks_path(current_user.dog), class:"text-decoration-none return-btn") do %>
@@ -7,6 +7,7 @@
 
     <div class="showmap"
       data-controller="map"
+      data-map-target="map"
       data-map-markers-value="<%= @markers.to_json %>"
       data-map-type-value="<%= @walk_geometry["type"] %>"
       data-map-coordinates-value="<%= @walk_geometry["coordinates"] %>"
