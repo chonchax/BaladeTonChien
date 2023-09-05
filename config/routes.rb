@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :users, only: %i[index]
   resources :tindogs, only: %i[index create]
 
-  resources :matches, only: %i[show] do
+  resources :matches, only: %i[index show] do
     resources :messages, only: %i[create]
   end
 

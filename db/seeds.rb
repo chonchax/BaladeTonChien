@@ -1,7 +1,7 @@
 require 'open-uri'
 require 'json'
 # il faut créer un user et associer le chien au user
-# Tindog.destroy_all
+Tindog.destroy_all
 User.destroy_all
 Walk.destroy_all
 Message.destroy_all
@@ -207,6 +207,8 @@ bug_one = Walk.where(title: "Jeu de Regards sur Méginand")
 Walk.destroy(bug_one.ids)
 bug_two = Walk.where(title: "Petit sentier du Bois du Fort")
 Walk.destroy(bug_two.ids)
+bug_three = Walk.where(title: "Champ Blanc")
+Walk.destroy(bug_three.ids)
 
 puts "bug destroy"
 

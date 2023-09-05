@@ -23,13 +23,18 @@
   color: red;
 }
 
+
 .fifi {
   width: 30px;
   display: flex; 
 }
 
-.contain
+.indexmap .mapboxgl-ctrl-group {
+  position: fixed;
+  top: 60px;
+  right: 0;
 
+}
 
 
 
