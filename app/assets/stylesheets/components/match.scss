@@ -1,16 +1,29 @@
 .match {
   background: white;
-  margin-top: 9px;
+  // margin-top: 9px;
   height: calc(100vh - 75px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   flex-grow: 1;
 
-  h1 {
+  h3 {
+    font-weight: bold;
+    flex-grow: 1;
+    margin: 0;
+    text-align: center;
+  }
+
+  .top {
+    display: flex;
     border-bottom: 1px solid $gray-200;
     margin-bottom: 0;
-    padding: 1rem;
+    padding: 0.5rem;
+    align-items: center;
+
+    a {
+      color: black;
+    }
   }
 
   .messages {
