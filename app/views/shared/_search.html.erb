@@ -13,12 +13,16 @@
   <% end %>
 
   <div class="filters">
-    <%= link_to "Facile", dog_walks_path(@dog, difficulty: 'facile'), class: "filter-link" %>
-    <%= link_to "Moyen", dog_walks_path(@dog, difficulty: 'moyen'), class: "filter-link" %>
-    <%= link_to "Difficile", dog_walks_path(@dog, difficulty: 'difficile'), class: "filter-link" %>
-    <%= link_to "Inférieures à 1h", dog_walks_path(@dog, duration: 60), class: "filter-link" %>
-    <%= link_to "Inférieures à 5km", dog_walks_path(@dog, distance: 5), class: "filter-link" %>
-    <%= link_to "All", dog_walks_path(@dog, @walks), class: "filter-link" %>
+    <%#= link_to "Facile", dog_walks_path(@dog, difficulty: 'facile'), class: "filter-link" %>
+    <%#= link_to "Moyen", dog_walks_path(@dog, difficulty: 'moyen'), class: "filter-link" %>
+    <%#= link_to "Difficile", dog_walks_path(@dog, difficulty: 'difficile'), class: "filter-link" %>
+    <%#= link_to "Inférieures à 1h", dog_walks_path(@dog, duration: 60), class: "filter-link" %>
+    <%#= link_to "Inférieures à 5km", dog_walks_path(@dog, distance: 5), class: "filter-link" %>
+    <%#= link_to "All", dog_walks_path(@dog, @walks), class: "filter-link" %>
+
+
+    <%= filter("difficulty", "facile", "facile") %>
+    <%= filter("duration", "60", "Inferieur à 1h") %>
 
   </div>
 </div>
