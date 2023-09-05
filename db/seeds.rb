@@ -1,7 +1,7 @@
 require 'open-uri'
 require 'json'
 # il faut créer un user et associer le chien au user
-Tindog.destroy_all
+# Tindog.destroy_all
 User.destroy_all
 Walk.destroy_all
 Message.destroy_all
