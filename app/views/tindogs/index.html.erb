@@ -1,6 +1,11 @@
 <div class="app_container tindog-background">
   <div class="tinder" data-controller="tindogs">
 
+    <div class="tinder--status">
+      <i class="fa fa-remove"></i>
+      <i class="fa fa-heart"></i>
+    </div>
+
     <div class="tinder--cards">
       <% @dogs.each do |dog| %>
         <div class="tinder--card" data-tindogs-target="card" data-receiver-id="<%= dog.id %>">
@@ -10,7 +15,7 @@
                 <%= cl_image_tag dog.photo.key, class:"avatar-large" %>
                 <h3> <%= dog.name %> </h2>
                 <p><%= dog.breed %>  </p>
-                <p><i class="fa-solid fa-venus-mars"></i>  <%= dog.sexe %> de <%= "#{dog.age} #{dog.age > 1 ? "ans" : "an"}" %>  </p>
+                <p><i class="fa-solid fa-venus-mars"></i>  <%= "#{dog.sexe} #{dog.neutered ? (dog.sexe == "Femelle" ? "stérilisée": "stérilisé") : (dog.sexe == "Femelle" ? "non stérilisée": "non stérilisé")} de  #{dog.age} #{dog.age > 1 ? "ans" : "an"}" %>  </p>
               </div>
 
 
@@ -36,7 +41,7 @@
                   <% if dog.good_with_others_dogs > 3 %>
                     <p> <i class="fa-solid fa-circle-check positive"></i> Mâles et femelles </p>
                   <% else %>
-                    <p><i class="fa-solid fa-circle-xmark negative"></i> Mâles non stérilisés  </p>
+                    <p><i class="fa-solid fa-circle-xmark negative"></i> Chiens non stérilisés  </p>
                   <% end %>
 
                   <% if dog.good_with_strangers > 3 %>
@@ -55,8 +60,24 @@
                 </div>
               </div>
 
-            <div>
-            </div>
+
+
+              <strong> <p> ⚡️ Compatibilité : <%= [
+                  @dog.good_with_others_dogs > 3 || dog.neutered,
+                  @dog.good_with_chidren > 3 || (dog.size != "Petit"),
+                  (@dog.energy > 3 && dog.energy > 3) || (@dog.energy <= 3 && dog.energy <= 3),
+                  dog.good_with_others_dogs > 3 || @dog.neutered,
+                  dog.good_with_others_dogs > 3 || @dog.neutered,
+                  dog.good_with_chidren > 3 || (@dog.size != "Petit"),
+                  dog.good_with_chidren > 3 || (@dog.size != "Petit"),
+                  (dog.good_with_strangers > 3 && @dog.good_with_strangers > 3) || (dog.good_with_strangers <= 3 && @dog.good_with_strangers),
+                  (dog.size != "Petit" && @dog.size != "Petit") || (dog.size == @dog.size),
+                  (dog.size != "Petit" && @dog.size != "Petit") || (dog.size == @dog.size)
+                  ].count(true) * 10
+                  %>% ⚡️
+              </p> </strong>
+
+
           </div>
         </div>
       <% end %>
