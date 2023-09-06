@@ -2,30 +2,30 @@
 
   <iframe src="https://giphy.com/embed/h7uTwqEHysbd2lhyDP" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 
-  
+
     <div class="its">
       <div class="matchi">
         <h1>C'est un MATCH</h1>
       </div>
 
-  
-    
+
+
       <div class="chien1">
         <%= cl_image_tag tindog.receiver.photo.key, class:"avatar-large", crop: :fill %>
        <p class="text-center"><%= tindog.receiver.name %></p>
         <div class="chien2">
-          <%= cl_image_tag tindog.sender.photo.key, class:"avatar-large", crop: :fill %> 
-          <p class="text-center"><%= tindog.sender.name %></p>  
+          <%= cl_image_tag tindog.sender.photo.key, class:"avatar-large", crop: :fill %>
+          <p class="text-center"><%= tindog.sender.name %></p>
         </div>
       </div>
 
 
       <div class="boubou">
-        <%= link_to(dog_walks_path(current_user.dog), class:"text-decoration-none bouton") do %>
-        Conversation
+        <%= link_to(match_path(match), class:"text-decoration-none bouton") do %>
+          <%=  "Prévois une sortie" %>
         <% end %>
       </div>
-      
+
     </div>
 
 
