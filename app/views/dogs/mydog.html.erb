@@ -1,11 +1,12 @@
-<div class="app_container">
-  <div class="my-dog-background center-everything">
+<div class="app_container my-dog-background">
+  <div class="">
+    <div class="center-everything">
 
       <div class="bulles">
         <%= cl_image_tag @dog.photo.key, class:"avatar-large" %>
         <h2> <%= @dog.name %> </h2>
         <p><%= @dog.breed %>  </p>
-        <p> <%= @dog.sexe %> de <%= @dog.age %> ans </p>
+        <p><i class="fa-solid fa-venus-mars"></i>  <%= @dog.sexe %> de <%= "#{@dog.age} #{@dog.age > 1 ? "ans" : "an"}"  %> </p>
       </div>
 
       <div class="description-mydog">
@@ -52,6 +53,7 @@
       </div>
 
 
+    </div>
   </div>
 </div>
 

@@ -20,9 +20,9 @@ class TindogsController < ApplicationController
 
     if match(@tindog)
       @match = Match.create
-      @message = Message.create(user: current_user, content: "", match: @match)
-      @message = Message.create(user: Dog.find(@tindog.receiver_id).user, content: "", match: @match)
-      render partial: "matches/its_a_match", locals: { tindog: @tindog }, formats: :html
+      @message = Message.create(user: current_user, content: "🦴🥎", match: @match)
+      @message = Message.create(user: Dog.find(@tindog.receiver_id).user, content: "🐾🌳", match: @match)
+      render partial: "matches/its_a_match", locals: { tindog: @tindog, match: @match }, formats: :html
     end
   end
 

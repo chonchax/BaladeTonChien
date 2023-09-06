@@ -1,43 +1,60 @@
 <div class="app_container tindog-background">
   <div class="tinder" data-controller="tindogs">
-    <div class="tinder--status">
-      <i class="fa fa-remove"></i>
-      <i class="fa fa-heart"></i>
-    </div>
+
     <div class="tinder--cards">
       <% @dogs.each do |dog| %>
         <div class="tinder--card" data-tindogs-target="card" data-receiver-id="<%= dog.id %>">
           <div class="center-everythings">
-            <div class="photo-tindog">
-              <%= cl_image_tag dog.photo.key, class:"avatar-large", crop: :fill %>
-            </div class="name-description-tindog">
-              <h3> <%= dog.name %> </h3>
+
+              <div class="tindog-title">
+                <%= cl_image_tag dog.photo.key, class:"avatar-large" %>
+                <h3> <%= dog.name %> </h2>
+                <p><%= dog.breed %>  </p>
+                <p><i class="fa-solid fa-venus-mars"></i>  <%= dog.sexe %> de <%= "#{dog.age} #{dog.age > 1 ? "ans" : "an"}" %>  </p>
+              </div>
+
+
+
               <div class="description-tindog">
-                <p> <%=
-                "#{dog.breed} de #{dog.age} #{dog.age > 1 ? "ans" : "an"} qui #{dog.energy < 3 ? "plutôt calme": "qui a besoin de se dépenser"}, et qui
-                #{dog.good_with_strangers < 3 ? "s'entend pas bien avec les inconnus": "s'entend bien avec les inconnus"}."
-                %>
-                </p>
-                <div class="warnings">
-                  <% if current_user.dog.good_with_others_dogs <= 3 && dog.neutered == false && dog.sexe == "Mâle" %>
-                    <p><i class="fa-solid fa-triangle-exclamation negative"></i> Mâle non stérilisé  </p>
+                <p><strong>Activité :  </strong> </p>
+                  <div class="description-block">
+                    <% if dog.energy > 3 %>
+                      <p> <i class="fa-solid fa-circle-check positive"></i> Balades dynamiques  </p>
                     <% else %>
-                    <p> <i class="fa-solid fa-venus-mars"></i> <%= "#{dog.sexe} #{dog.neutered ? (dog.sexe == "Femelle" ? "stérilisée": "stérilisé") : (dog.sexe == "Femelle" ? "non stérilisée": "non stérilisé")}" %>
-                    </p>
+                      <p><i class="fa-solid fa-circle-xmark negative"></i> Balades dynamiques </p>
+                    <% end %>
+
+                    <% if dog.size == "Moyen" || dog.size == "Grand"%>
+                      <p> <i class="fa-solid fa-circle-check positive"></i> Longues distances </p>
+                    <% else %>
+                      <p><i class="fa-solid fa-circle-xmark negative"></i> Longues distances </p>
+                    <% end %>
+                  </div>
+                <p><strong>Ententes :  </strong> </p>
+                <div class="description-block">
+
+                  <% if dog.good_with_others_dogs > 3 %>
+                    <p> <i class="fa-solid fa-circle-check positive"></i> Mâles et femelles </p>
+                  <% else %>
+                    <p><i class="fa-solid fa-circle-xmark negative"></i> Mâles non stérilisés  </p>
                   <% end %>
-                  <% if current_user.dog.good_with_chidren <= 3 && dog.size == "Petit" %>
-                    <p><i class="fa-solid fa-triangle-exclamation negative"></i> Chien de petite taille  </p>
+
+                  <% if dog.good_with_strangers > 3 %>
+                    <p> <i class="fa-solid fa-circle-check positive"></i> Inconnus </p>
+                  <% else %>
+                    <p><i class="fa-solid fa-circle-xmark negative"></i> Inconnus </p>
                   <% end %>
-                  <% if (current_user.dog.size == "Grand" || current_user.dog.size == "Moyen") && dog.size == "Petit" %>
-                    <p><i class="fa-solid fa-triangle-exclamation negative"></i> Préfère les balades courtes  </p>
+
+                  <% if dog.good_with_chidren > 3 %>
+                    <p> <i class="fa-solid fa-circle-check positive"></i> Petits et grands chiens </p>
+                  <% else %>
+                    <p><i class="fa-solid fa-circle-xmark negative"></i> Chiens de petite taille </p>
                   <% end %>
-                  <% if current_user.dog.energy <= 3 && dog.energy > 3 %>
-                    <p><i class="fa-solid fa-triangle-exclamation negative"></i> A l'habitude de balades plus dynamiques que <%= current_user.dog.name %> </p>
-                  <% elsif current_user.dog.energy > 3 && dog.energy <= 3 %>
-                    <p><i class="fa-solid fa-triangle-exclamation negative"></i> A l'habitude de balades moins dynamiques que <%= current_user.dog.name %>  </p>
-                  <% end %>
+
+
                 </div>
               </div>
+
             <div>
             </div>
           </div>

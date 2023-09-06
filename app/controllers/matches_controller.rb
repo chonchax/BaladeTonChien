@@ -1,5 +1,5 @@
 class MatchesController < ApplicationController
-  
+
   def show
     @match = Match.find(params[:id])
     @user = @match.users.reject { |user| user == current_user }.first
