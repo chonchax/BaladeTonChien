@@ -199,7 +199,7 @@ walks['features'].each do |walk|
     description: walk['properties']['descriptif'],
     start_address_longitude: walk['properties']['xdepart'],
     start_address_latitude: walk['properties']['ydepart'],
-    geometry: walk['geometry']
+    geometry: walk['geometry'],
   )
 end
 puts "jai fini de chopper, je fix les bugs"

@@ -1,11 +1,8 @@
 <%= link_to(dog_walk_path(current_user.dog, walk), class:"text-decoration-none text-dark") do %>
   <div class="card-product">
-    <%= image_tag "balade.jpg"%>
-    <div class="walk-description fit">
       <h2><%= walk.title %></h2>
-      <p> <i class="fa-regular fa-map"></i> <%= walk.distance %> km</p>
-      <p> <i class="fa-solid fa-arrow-trend-up"></i> <%= walk.difficulty.capitalize %></p>
-      <p> <i class="fa-solid fa-location-dot"></i> <%= walk.city %></p>
-    </div>
+      <p> <i class="fa-regular fa-map"></i>  <%= walk.distance %> km</p>
+      <p> <i class="fa-solid fa-arrow-trend-up"></i>  <%= walk.difficulty.capitalize %></p>
+      <p> <i class="fa-solid fa-location-dot"></i>   <%= walk.city %></p>
   </div>
 <% end %>
