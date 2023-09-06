@@ -1,0 +1,5 @@
+meta_name: "Balade ton chien"
+meta_title: "balade ton chien - On y va"
+meta_description: "Balade ton chien est une application pour trouver des sorties pour son chien"
+meta_image: "cover.png" # should exist in `app/assets/images/`
+twitter_account: "@Thalex360"   # required for Twitter Cards
