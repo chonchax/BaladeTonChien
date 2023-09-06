@@ -7,7 +7,6 @@ export default class extends Controller {
   connect() {
     this.initializeCards()
     this.movecard()
-    this.createButtonListener()
   }
 
   initializeCards() {
@@ -102,36 +101,75 @@ export default class extends Controller {
     })
   }
 
-  createButtonListener() {
-  return (event) => {
-    const cards = this.cardTargets.filter((card) => !card.classList.contains("removed"));
+  nope(event) {
+    event.preventDefault();
+    const caards = this.cardTargets
+    const cards  = this.cardTargets.filter((card) => !card.classList.contains("removed"));
     const moveOutWidth = document.body.clientWidth * 1.5;
 
     if (!cards.length) return false;
 
     const card = cards[0];
     card.classList.add("removed");
+    card.style.transform = `translate(-${moveOutWidth}px, -100px) rotate(-30deg)`;
+    const newCards = caards.filter((toto) => {
+      return !toto.classList.contains("removed")
+    })
+    card.classList.remove();
 
-    if (love) {
-      card.style.transform = `translate(${moveOutWidth}px, -100px) rotate(-30deg)`;
-    } else {
-      card.style.transform = `translate(-${moveOutWidth}px, -100px) rotate(30deg)`;
-    }
+    newCards.forEach((card, index) => {
+      card.style.zIndex = caards.length - index;
+      card.style.transform = `scale(${(20 - index) / 20}) translateY(-${30 * index}px) rotate(${index * 2}deg)` ;
+      card.style.opacity = (10 - index) / 10;
+    });
+  }
 
+  love(event) {
     event.preventDefault();
-  };
-  }
+    const caards = this.cardTargets
+    const cards  = this.cardTargets.filter((card) => !card.classList.contains("removed"));
+    const moveOutWidth = document.body.clientWidth * 1.5;
 
-  nope() {
-  (false);
-  }
+    if (!cards.length) return false;
 
-  love() {
-  (true);
+    const card = cards[0];
+    card.classList.add("removed");
+    card.style.transform = `translate(${moveOutWidth}px, -100px) rotate(-30deg)`;
+    const csrfToken = document.querySelector("[name='csrf-token']").content
+    fetch("/tindogs", {
+      method: "POST",
+      headers: {
+        "X-CSRF-Token": csrfToken,
+        "Content-Type": "application/json",
+        "Accept": "plain/text"
+      },
+      body: JSON.stringify({
+        receiver_id: card.dataset.receiverId,
+      })
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log(data);
+        setTimeout(() => {
+          // tinderContainer.insertAdjacentHTML("beforeend", data)
+        }, 1000);
+      })
+
+    const newCards = caards.filter((toto) => {
+      return !toto.classList.contains("removed")
+    })
+    card.classList.remove();
+
+    newCards.forEach((card, index) => {
+      card.style.zIndex = caards.length - index;
+      card.style.transform = `scale(${(20 - index) / 20}) translateY(-${30 * index}px) rotate(${index * 2}deg)` ;
+      card.style.opacity = (10 - index) / 10;
+    });
+    // tinderContainer.classList.add("loaded");
   }
 
   remove(event) {
-    event.currentTarget.remove()
+    event.preventDefault();
   }
 
 }
