@@ -34,7 +34,7 @@ end
 
 dog1 = Dog.new(name: "Rex", breed: "Berger Australien", age: 4,
               energy: 3, playfulness: 5, good_with_strangers: 5,
-              good_with_others_dogs: 5, good_with_chidren: 4,
+              good_with_others_dogs: 2, good_with_chidren: 4,
               size: "Grand", neutered: true, good_with_water: 3,
               shadow_level: 3, sexe: "Mâle", user_id: user1.id)
               dog1.photo.attach(io: file1, filename: "toto.jpg", content_type: "image/jpg")
@@ -113,7 +113,7 @@ else
 end
 
 dog5 = Dog.new(name: "Zak", breed: "Berger des Shetland", age: 5,
-              energy: 3, playfulness: 4, good_with_strangers: 5,
+              energy: 5, playfulness: 4, good_with_strangers: 5,
               good_with_others_dogs: 5, good_with_chidren: 5,
               size: "Grand", neutered: false, good_with_water: 3,
               shadow_level: 1, sexe: "Mâle", user_id: user5.id)
@@ -173,7 +173,7 @@ else
 end
 
 dog8 = Dog.new(name: "Pirouette", breed: "Leonberg", age: 1,
-              energy: 5, playfulness: 5, good_with_strangers: 3,
+              energy: 2, playfulness: 5, good_with_strangers: 3,
               good_with_others_dogs: 1, good_with_chidren: 3,
               size: "Moyen", neutered: false, good_with_water: 3,
               shadow_level: 5, sexe: "Femelle", user_id: user8.id)

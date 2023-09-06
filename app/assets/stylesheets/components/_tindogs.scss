@@ -30,25 +30,25 @@
   pointer-events: none;
 }
 
-// .tinder--status i {
-//   font-size: 100px;
-//   opacity: 0;
-//   transform: scale(0.3);
-//   transition: all 0.2s ease-in-out;
-//   position: absolute;
-//   width: 100px;
-//   margin-left: -50px;
-// }
+.tinder--status i {
+  font-size: 100px;
+  opacity: 0;
+  transform: scale(0.3);
+  transition: all 0.2s ease-in-out;
+  position: absolute;
+  width: 100px;
+  margin-left: -50px;
+}
 
-// .tinder_love .fa-heart {
-//   opacity: 0.7;
-//   transform: scale(1);
-// }
+.tinder_love .fa-heart {
+  opacity: 0.7;
+  transform: scale(1);
+}
 
-// .tinder_nope .fa-remove {
-//   opacity: 0.7;
-//   transform: scale(1);
-// }
+.tinder_nope .fa-remove {
+  opacity: 0.7;
+  transform: scale(1);
+}
 
 .tinder--cards {
   flex-grow: 1;
@@ -168,7 +168,7 @@
 
 .tindog-title {
   text-align: center;
-  margin: 8%;
+  margin: 5%;
   p {
     margin:0;
     line-height: 1.8rem;
@@ -178,7 +178,7 @@
 
 .description-tindog {
   background-color: rgb(248, 244, 244);
-  padding: 8%;
+  padding: 5%;
   border-radius: 30px;
   font-family: 'Outfit', sans-serif;
   text-align: left;
