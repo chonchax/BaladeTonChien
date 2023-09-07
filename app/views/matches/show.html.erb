@@ -1,7 +1,7 @@
 <div class="container match"
-     data-controller="match-subscription"
-     data-match-subscription-match-id-value="<%= @match.id%>"
-     data-match-subscription-current-user-id-value="<%= current_user.id%>"
+    data-controller="match-subscription"
+    data-match-subscription-match-id-value="<%= @match.id%>"
+    data-match-subscription-current-user-id-value="<%= current_user.id%>"
 >
   <div class="top">
     <%= link_to(matches_path, class:"text-decoration-none") do %>
@@ -12,7 +12,7 @@
 
 
   <div class="messages"
-       data-match-subscription-target="messages"
+      data-match-subscription-target="messages"
   >
     <% @messages.each do |message| %>
       <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
