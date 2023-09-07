@@ -10,7 +10,6 @@
 
   <%= match.user_ids %>
 
-
       <div class="chien1">
         <%= cl_image_tag tindog.receiver.photo.key, class:"avatar-large", crop: :fill %>
       <p class="text-center"><%= tindog.receiver.name %></p>
@@ -19,7 +18,6 @@
           <p class="text-center"><%= tindog.sender.name %></p>
         </div>
       </div>
-
 
       <div class="boubou">
         <%= link_to(match_path(match), class:"text-decoration-none bouton") do %>
