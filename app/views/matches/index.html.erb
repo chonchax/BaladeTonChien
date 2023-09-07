@@ -3,7 +3,7 @@
   <h1>Discussions</h1>
     <% @matches.each do |match| %>
       <div class="message-card">
-      <% if match.users.include?(current_user) %>
+
         <% if match.users.first == current_user  %>
           <%= link_to(match_path(match), class:"text-decoration-none text-dark flex") do %>
             <%= cl_image_tag match.users.last.dog.photo.key, class:"avatar", crop: :fill %>
@@ -21,7 +21,7 @@
             </div>
           <% end %>
         <% end %>
-      <% end %>
+
 
 
 

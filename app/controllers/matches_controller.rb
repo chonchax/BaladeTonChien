@@ -8,6 +8,6 @@ class MatchesController < ApplicationController
   end
 
   def index
-    @matches = Match.all
+    @matches = Match.all.select { |match| match.users.include?(current_user) }
   end
 end
