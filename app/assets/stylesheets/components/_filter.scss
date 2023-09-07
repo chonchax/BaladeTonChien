@@ -39,14 +39,15 @@
 
 .filter-link {
   height: fit-content;
-  color: #116D6E;
+  color: rgb(176, 57, 57);
   text-decoration: none;
   border-radius: 40px;
-  border: 1px solid  #116D6E;
+  border: 1px solid  rgb(176, 57, 57);
   padding: 8px 16px;
   white-space: nowrap;
   &.active {
-    background-color:  #116D6E;
+    background-color:  rgb(176, 57, 57);
     color: white;
   }
+  // #116D6E
 }
