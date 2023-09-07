@@ -26,7 +26,7 @@ export default class extends Controller {
     return `
       <div class="message-row d-flex ${this.#justifyClass(currentUserIsSender)}">
         <div class="${this.#userStyleClass(currentUserIsSender)}">
-          ${message.content}
+          <span>${message.content}</span>
         </div>
       </div>
     `
