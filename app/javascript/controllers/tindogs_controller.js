@@ -74,7 +74,7 @@ export default class extends Controller {
                 console.log(data);
                 setTimeout(() => {
                   document.body.insertAdjacentHTML("beforeend", data)
-                }, 1000);
+                }, 500);
               })
           }
 
@@ -151,8 +151,8 @@ export default class extends Controller {
     .then(data => {
         console.log(data);
         setTimeout(() => {
-          // tinderContainer.insertAdjacentHTML("beforeend", data)
-        }, 1000);
+          document.querySelector('body').insertAdjacentHTML("beforeend", data)
+        }, 500);
       })
 
     const newCards = caards.filter((toto) => {
