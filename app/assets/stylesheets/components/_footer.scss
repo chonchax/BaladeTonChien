@@ -27,11 +27,16 @@
   padding: 10px;
   margin-left: 10px;
   margin-right: 10px;
+
+  &.black {
+    opacity: 1;
+  }
 }
 
-.footer-links a:hover {
-  opacity: 1;
-}
+// .footer-links a:hover {
+//   opacity: 3;
+
+// }
 
 // .footer .fa-heart {
 //   color: black;
