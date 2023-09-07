@@ -26,7 +26,7 @@
         <p><strong> <i class="fa-regular fa-clock"></i></strong> <%= @walk.duration.to_i >= 60 ? Time.at(@walk.duration.to_i * 60).utc.strftime("%Hh%M") : Time.at(@walk.duration.to_i * 60).utc.strftime("%Mmin")  %></p>
       </div>
       <div class="walk-description">
-       <% if @walk.city == "Lyon"  %>
+      <% if @walk.city == "Lyon"  %>
         <%= image_tag "lyon.jpg", class: "walk-photo"%>
       <% else %>
         <%= image_tag "grand-parc-de-miribel.jpg", class:"walk-photo"%>
