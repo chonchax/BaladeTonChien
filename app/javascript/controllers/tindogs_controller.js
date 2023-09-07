@@ -73,7 +73,7 @@ export default class extends Controller {
               .then(data => {
                 console.log(data);
                 setTimeout(() => {
-                  tinderContainer.insertAdjacentHTML("beforeend", data)
+                  document.body.insertAdjacentHTML("beforeend", data)
                 }, 1000);
               })
           }

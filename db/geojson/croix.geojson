@@ -1510,9 +1510,9 @@
       "properties": {
         "title": "Balade urbaine à Lyon Croix Rousse : ses pentes et son plateau",
         "city": "Lyon",
-        "distance": "10,25 km",
-        "difficulty": "Facile",
-        "duration": "200 min",
+        "distance": "8,25 km",
+        "difficulty": "Difficile",
+        "duration": "150 min",
         "description": "Le parcours présenté a pour objectif de déambuler sur quelques rues de la ville de Lyon, entre le Nord de la Presqu'île (Place des Terreaux) et le plateau de la Colline de la Croix-Rousse, tout en profitant par moment de beaux points de vue (côtés Rhône et Saône).",
         "start_address_longitude": 4.833567,
         "start_address_latitude": 45.767271

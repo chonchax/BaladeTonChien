@@ -12,7 +12,7 @@
           </div>
         <% end %>
       <% else  %>
-          <%= link_to(match_path(match), class:"text-decoration-none text-dark flex") do %>
+        <%= link_to(match_path(match), class:"text-decoration-none text-dark flex") do %>
           <%= cl_image_tag match.users.first.dog.photo.key, class:"avatar", crop: :fill %>
           <div>
             <strong> <%= match.users.first.username %> </strong>

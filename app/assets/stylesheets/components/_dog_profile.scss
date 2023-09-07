@@ -23,6 +23,7 @@
 
 .description-mydog {
   background-color: white;
+  width: 100%;
   padding: 8%;
   border-radius: 30px;
   font-family: 'Outfit', sans-serif;
@@ -36,13 +37,6 @@
   }
 }
 
-.description-block {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: space-around;
-  text-align: center;
-  gap: 8%;
-}
 
 
 .dog-avatar {
