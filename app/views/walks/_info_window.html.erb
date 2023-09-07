@@ -1,8 +1,13 @@
 <%= link_to(dog_walk_path(current_user.dog, walk), class:"text-decoration-none text-dark") do %>
   <div class="card-product">
       <h2><%= walk.title %></h2>
-      <p> <i class="fa-regular fa-map"></i>  <%= walk.distance %> km</p>
-      <p> <i class="fa-solid fa-arrow-trend-up"></i>  <%= walk.difficulty.capitalize %></p>
-      <p> <i class="fa-solid fa-location-dot"></i>   <%= walk.city %></p>
+      <div class="walk-infos">
+        <p> <strong> <i class="fa-solid fa-location-dot" ></i> </strong> <%= walk.city %></p>
+        <p> <strong> <i class="fa-solid fa-arrow-trend-up" ></i></strong> <%= walk.difficulty.capitalize %></p>
+      </div>
+      <div class="walk-infos">
+        <p> <strong> <i class="fa-regular fa-map" ></i> </strong> <%= walk.distance %> km</p>
+        <p><strong> <i class="fa-regular fa-clock"></i></strong> <%= walk.duration.to_i >= 60 ? Time.at(walk.duration.to_i * 60).utc.strftime("%Hh%M") : Time.at(walk.duration.to_i * 60).utc.strftime("%Mmin")  %></p>
+      </div>
   </div>
 <% end %>
