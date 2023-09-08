@@ -1,7 +1,7 @@
 <div class="app_container" >
 
   <div>
-    <%= link_to(dog_walks_path(current_user.dog), class:"text-decoration-none return-btn") do %>
+    <%= link_to(:back, class:"text-decoration-none return-btn") do %>
       <i class="fa-solid fa-chevron-left"></i>
     <% end %>
 
@@ -27,7 +27,7 @@
       </div>
       <div class="walk-description">
       <% if @walk.city == "Lyon"  %>
-        <%= image_tag "lyon.jpg", class: "walk-photo"%>
+        <%= image_tag "confluence.jpg", class: "walk-photo"%>
       <% else %>
         <%= image_tag "grand-parc-de-miribel.jpg", class:"walk-photo"%>
       <% end %>
