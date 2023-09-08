@@ -2,7 +2,7 @@
   width: 100vw;
   margin-bottom: 70px;
   background-color: #ffffff;
-  min-height: 95vh;
+  min-height: calc(100vh - 70px);
   position: relative;
 }
 
